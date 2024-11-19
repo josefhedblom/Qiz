@@ -1,0 +1,94 @@
+{
+  "results": [
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: Videospel",
+      "question": "I 'The Binding of Isaac', vilket föremål dödar omedelbart Mom och Mom's Heart?",
+      "correct_answer": "The Bible",
+      "incorrect_answers": ["The Halo", "Brimstone", "Book of Shadows"],
+      "options": ["The Bible", "The Halo", "Brimstone", "Book of Shadows"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: Videospel",
+      "question": "Vad var kodnamnet för Sonic the Hedgehog 4 under dess utveckling?",
+      "correct_answer": "Project Needlemouse",
+      "incorrect_answers": ["Project Bluespike", "Project Roboegg", "Project Darksphere"],
+      "options": ["Project Needlemouse", "Project Bluespike", "Project Roboegg", "Project Darksphere"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: Videospel",
+      "question": "Vilken av dessa vapenklasser finns INTE i det första Monster Hunter-spelet?",
+      "correct_answer": "Bow",
+      "incorrect_answers": ["Hammer", "Heavy Bowgun", "Light Bowgun"],
+      "options": ["Bow", "Hammer", "Heavy Bowgun", "Light Bowgun"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: Videospel",
+      "question": "I spelet Danganronpa: Happy Trigger Havoc, vad är Aoi Asahinas ultimata förmåga?",
+      "correct_answer": "Ultimate Swimmer",
+      "incorrect_answers": ["Ultimate Detective", "Ultimate Gambler", "Ultimate Dancer"],
+      "options": ["Ultimate Swimmer", "Ultimate Detective", "Ultimate Gambler", "Ultimate Dancer"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: Videospel",
+      "question": "I 'Starbound', vad är max HP för monstret 'Punchy'?",
+      "correct_answer": "50,000 HP",
+      "incorrect_answers": ["9,000,000 HP", "100 HP", "150,000 HP"],
+      "options": ["50,000 HP", "9,000,000 HP", "100 HP", "150,000 HP"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: Videospel",
+      "question": "Vilket retrovideospel släpptes först?",
+      "correct_answer": "Space Invaders",
+      "incorrect_answers": ["Galaga", "Pac-Man", "Asteroids"],
+      "options": ["Space Invaders", "Galaga", "Pac-Man", "Asteroids"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: Videospel",
+      "question": "Vilket spel var exklusivt för Dreamcast?",
+      "correct_answer": "Pen Pen TriIcelon",
+      "incorrect_answers": ["Sylvester & Tweety in Cagey Capers", "Perfect Dark", "Tetrisphere"],
+      "options": ["Pen Pen TriIcelon", "Sylvester & Tweety in Cagey Capers", "Perfect Dark", "Tetrisphere"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: Videospel",
+      "question": "Kartan i Arma 3 som heter 'Altis' är baserad på vilken grekisk ö?",
+      "correct_answer": "Lemnos",
+      "incorrect_answers": ["Ithaca", "Naxos", "Anafi"],
+      "options": ["Lemnos", "Ithaca", "Naxos", "Anafi"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: Videospel",
+      "question": "I World of Warcraft-lore, vem organiserade skapandet av Paladins?",
+      "correct_answer": "Alonsus Faol",
+      "incorrect_answers": ["Uther the Lightbringer", "Alexandros Mograine", "Sargeras, The Daemon Lord"],
+      "options": ["Alonsus Faol", "Uther the Lightbringer", "Alexandros Mograine", "Sargeras, The Daemon Lord"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: Videospel",
+      "question": "Skapandet av Entertainment Software Ratings Board (ESRB) är ofta förknippat med Mortal Kombat och vilket FMV-videospel?",
+      "correct_answer": "Night Trap",
+      "incorrect_answers": ["Sewer Shark", "The Daedalus Encounter", "Corpse Killer"],
+      "options": ["Night Trap", "Sewer Shark", "The Daedalus Encounter", "Corpse Killer"]
+    }
+  ]
+}

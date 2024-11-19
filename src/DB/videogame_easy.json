@@ -1,0 +1,103 @@
+{
+  "results": [
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Video Games",
+      "question": "Vilket år släpptes Super Mario Bros.?",
+      "correct_answer": "1985",
+      "incorrect_answers": ["1983", "1987", "1986"],
+      "options": ["1985", "1983", "1987", "1986"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Video Games",
+      "question": "I PAYDAY-serien, vem förrådde PAYDAY-gänget som fick Hoxton arresterad?",
+      "correct_answer": "Hector",
+      "incorrect_answers": ["Vlad", "The Dentist", "The Elephant"],
+      "options": ["Hector", "Vlad", "The Dentist", "The Elephant"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Video Games",
+      "question": "Typen \"fairy\" debuterade i vilken generation av Pokemon-kärnspelen?",
+      "correct_answer": "6:e",
+      "incorrect_answers": ["2:a", "7:e", "4:e"],
+      "options": ["6:e", "2:a", "7:e", "4:e"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Video Games",
+      "question": "I Animal Crossing, vem är chef för stadens butik?",
+      "correct_answer": "Tom Nook",
+      "incorrect_answers": ["Mr. Resetti", "Gracie", "K.K. Slider"],
+      "options": ["Tom Nook", "Mr. Resetti", "Gracie", "K.K. Slider"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Video Games",
+      "question": "Vad är Makoto Naegis ultimata titel, protagonisten i Danganronpa: Trigger Happy Havoc?",
+      "correct_answer": "Ultimate Lucky Student",
+      "incorrect_answers": ["Ultimate Unlucky Student", "Ultimate Detective", "Ultimate Runner"],
+      "options": ["Ultimate Lucky Student", "Ultimate Unlucky Student", "Ultimate Detective", "Ultimate Runner"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Video Games",
+      "question": "Aperture Science CEO Cave Johnson röstas av vilken amerikansk skådespelare?",
+      "correct_answer": "J.K. Simmons",
+      "incorrect_answers": ["Nolan North", "John Patrick Lowrie", "Christopher Lloyd"],
+      "options": ["J.K. Simmons", "Nolan North", "John Patrick Lowrie", "Christopher Lloyd"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Video Games",
+      "question": "I Portal 2, hur dog troligen CEO för Aperture Science, Cave Johnson?",
+      "correct_answer": "Månfelsförgiftning",
+      "incorrect_answers": [
+        "Skickade av misstag en portal till månen",
+        "Halkade i duschen",
+        "Asbestförgiftning"
+      ],
+      "options": [
+        "Månfelsförgiftning",
+        "Skickade av misstag en portal till månen",
+        "Halkade i duschen",
+        "Asbestförgiftning"
+      ]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Video Games",
+      "question": "Vad var Frank Wests jobb i \"Dead Rising\"?",
+      "correct_answer": "Fotograf",
+      "incorrect_answers": ["Städare", "Kock", "Taxichaufför"],
+      "options": ["Fotograf", "Städare", "Kock", "Taxichaufför"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Video Games",
+      "question": "När släpptes spelet 'Portal 2'?",
+      "correct_answer": "2011",
+      "incorrect_answers": ["2014", "2009", "2007"],
+      "options": ["2011", "2014", "2009", "2007"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Video Games",
+      "question": "När släpptes Minecraft för allmänheten?",
+      "correct_answer": "17 maj 2009",
+      "incorrect_answers": ["17 september 2009", "18 november 2011", "7 oktober 2011"],
+      "options": ["17 maj 2009", "17 september 2009", "18 november 2011", "7 oktober 2011"]
+    }
+  ]
+}

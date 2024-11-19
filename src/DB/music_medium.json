@@ -1,0 +1,94 @@
+{
+  "results": [
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: Musik",
+      "question": "På omslaget av 'Abbey Road', vilken av Beatlesmedlemmarna bär inte skor?",
+      "correct_answer": "Paul McCartney",
+      "incorrect_answers": ["Ringo Starr", "John Lennon", "George Harrison"],
+      "options": ["Paul McCartney", "Ringo Starr", "John Lennon", "George Harrison"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: Musik",
+      "question": "I låten \"The Ultimate Showdown of Ultimate Destiny\", vem är den enda som överlever striden?",
+      "correct_answer": "Mr. Rogers",
+      "incorrect_answers": ["Batman", "Chuck Norris", "Godzilla"],
+      "options": ["Mr. Rogers", "Batman", "Chuck Norris", "Godzilla"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: Musik",
+      "question": "The Who's egen linje, \"Teenage Wasteland\", finns i vilken av deras låtar?",
+      "correct_answer": "Baba O' Riley",
+      "incorrect_answers": ["The Seeker", "Won't Get Fooled Again", "Pinball Wizard"],
+      "options": ["Baba O' Riley", "The Seeker", "Won't Get Fooled Again", "Pinball Wizard"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: Musik",
+      "question": "Vilken av dessa är inte en singel av Pink Floyds gitarrist, David Gilmour?",
+      "correct_answer": "Sunset Strip",
+      "incorrect_answers": ["Rattle That Lock", "Blue Light", "Arnold Layne"],
+      "options": ["Sunset Strip", "Rattle That Lock", "Blue Light", "Arnold Layne"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: Musik",
+      "question": "Vad hette ABBAs första hitlåt i Storbritannien?",
+      "correct_answer": "Waterloo",
+      "incorrect_answers": ["Mamma Mia", "Fernando", "Dancing Queen"],
+      "options": ["Waterloo", "Mamma Mia", "Fernando", "Dancing Queen"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: Musik",
+      "question": "Hur många medlemmar finns i den japanska rockgruppen SCANDAL?",
+      "correct_answer": "4",
+      "incorrect_answers": ["5", "2", "18"],
+      "options": ["4", "5", "2", "18"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: Musik",
+      "question": "Vilken låt är inte av TheFatRat?",
+      "correct_answer": "Ascent",
+      "incorrect_answers": ["Monody", "Windfall", "Infinite Power!"],
+      "options": ["Ascent", "Monody", "Windfall", "Infinite Power!"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: Musik",
+      "question": "Vad heter det franska elektroniska musikduons album från 2016, Justice?",
+      "correct_answer": "Woman",
+      "incorrect_answers": ["Randy", "Safe and Sound", "Pleasure"],
+      "options": ["Woman", "Randy", "Safe and Sound", "Pleasure"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: Musik",
+      "question": "När släppte The Beatles LP:n \"Please Please Me\"?",
+      "correct_answer": "1963",
+      "incorrect_answers": ["1970", "1960", "1969"],
+      "options": ["1963", "1970", "1960", "1969"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: Musik",
+      "question": "Vilken av följande gitarrister spelade in ett album som medlem i Red Hot Chili Peppers?",
+      "correct_answer": "Dave Navarro",
+      "incorrect_answers": ["Tom Morello", "Billy Corgan", "Ed O'Brien"],
+      "options": ["Dave Navarro", "Tom Morello", "Billy Corgan", "Ed O'Brien"]
+    }
+  ]
+}

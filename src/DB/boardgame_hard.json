@@ -1,0 +1,94 @@
+{
+  "results": [
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: Brädspel",
+      "question": "Vilken karaktärsklass i Dungeons and Dragons 5:e upplagan får sina krafter genom att göra ett avtal med en varelse av högre makt?",
+      "correct_answer": "Warlock",
+      "incorrect_answers": ["Wizard", "Sorceror", "Cleric"],
+      "options": ["Warlock", "Wizard", "Sorceror", "Cleric"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: Brädspel",
+      "question": "Vad var kodnamnet för expansionen 'Urza's Destiny' för 'Magic: The Gathering', släppt 1999?",
+      "correct_answer": "Chimichanga",
+      "incorrect_answers": ["Burrito", "Taquito", "Enchilada"],
+      "options": ["Chimichanga", "Burrito", "Taquito", "Enchilada"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: Brädspel",
+      "question": "På ett standardbräde i Monopoly, hur mycket måste du betala för Tennessee Ave?",
+      "correct_answer": "$180",
+      "incorrect_answers": ["$200", "$160", "$220"],
+      "options": ["$180", "$200", "$160", "$220"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: Brädspel",
+      "question": "Brädspelet 'Ra' designades av vilken designer?",
+      "correct_answer": "Reiner Knizia",
+      "incorrect_answers": ["Bruno Cathala", "Uwe Rosenburg", "Allison Kline"],
+      "options": ["Reiner Knizia", "Bruno Cathala", "Uwe Rosenburg", "Allison Kline"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: Brädspel",
+      "question": "I Magic: The Gathering, vilken korts 'flavor text' är 'Catch!'?",
+      "correct_answer": "Lava Axe",
+      "incorrect_answers": ["Stone-Throwing Devils", "Ember Shot", "Throwing Knife"],
+      "options": ["Lava Axe", "Stone-Throwing Devils", "Ember Shot", "Throwing Knife"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: Brädspel",
+      "question": "Vad var kodnamnet för 'Weatherlight'-expansionen för 'Magic: The Gathering', släppt 1997?",
+      "correct_answer": "Mocha Latte",
+      "incorrect_answers": ["Decaf", "Frappuccino", "Macchiato"],
+      "options": ["Mocha Latte", "Decaf", "Frappuccino", "Macchiato"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: Brädspel",
+      "question": "Vilket av dessa kort från 'Magic: The Gathering' har en flavor text som börjar med 'Oi oi oi'?",
+      "correct_answer": "Uthden Troll",
+      "incorrect_answers": ["Lotleth Troll", "Albino Troll", "Harvester Troll"],
+      "options": ["Uthden Troll", "Lotleth Troll", "Albino Troll", "Harvester Troll"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: Brädspel",
+      "question": "Vilket kort är på framsidan av Beta-regelboken för 'Magic: The Gathering'?",
+      "correct_answer": "Bog Wraith",
+      "incorrect_answers": ["Island", "Rock Hydra", "Elvish Archers"],
+      "options": ["Bog Wraith", "Island", "Rock Hydra", "Elvish Archers"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: Brädspel",
+      "question": "I Magic: The Gathering, vilket begrepp för blockering introducerades i Portal-setet?",
+      "correct_answer": "Intercepting",
+      "incorrect_answers": ["Blocking", "Resisting", "Shielding"],
+      "options": ["Intercepting", "Blocking", "Resisting", "Shielding"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: Brädspel",
+      "question": "Vad är det mest utmanande monstret i Dungeons & Dragons 5:e upplagans Monster Manual?",
+      "correct_answer": "Tarrasque",
+      "incorrect_answers": ["Beholder", "Displacer Beast", "Lich"],
+      "options": ["Tarrasque", "Beholder", "Displacer Beast", "Lich"]
+    }
+  ]
+}

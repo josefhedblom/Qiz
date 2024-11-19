@@ -1,0 +1,94 @@
+{
+  "results": [
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Board Games",
+      "question": "I ett vanligt Monopolspel, vilken färg har de två billigaste fastigheterna?",
+      "correct_answer": "Brun",
+      "incorrect_answers": ["Grön", "Gul", "Blå"],
+      "options": ["Brun", "Grön", "Gul", "Blå"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Board Games",
+      "question": "I brädspel, en extra eller ändrad regel som gäller för en viss grupp eller plats kallas informellt en \"vad\"-regel?",
+      "correct_answer": "Husregel",
+      "incorrect_answers": ["Anpassad", "Extra", "Ändring"],
+      "options": ["Husregel", "Anpassad", "Extra", "Ändring"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Board Games",
+      "question": "På ett standard Monopol-bräde, vilken ruta är diagonalt motsatt \"Gå\"?",
+      "correct_answer": "Fri parkering",
+      "incorrect_answers": ["Gå i fängelse", "Fängelse", "Elverket"],
+      "options": ["Fri parkering", "Gå i fängelse", "Fängelse", "Elverket"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Board Games",
+      "question": "Vad är den högsta nivån du kan nå i en enskild klass i Dungeons and Dragons (5e)?",
+      "correct_answer": "20",
+      "incorrect_answers": ["30", "15", "25"],
+      "options": ["20", "30", "15", "25"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Board Games",
+      "question": "Vilket av dessa spel innehåller frasen \"Passera inte Gå, inkassera inte 200 kr\"?",
+      "correct_answer": "Monopol",
+      "incorrect_answers": ["Pay Day", "Cluedo", "Coppit"],
+      "options": ["Monopol", "Pay Day", "Cluedo", "Coppit"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Board Games",
+      "question": "Vilket år släpptes rollspelsspelet \"Deadlands\"?",
+      "correct_answer": "1996",
+      "incorrect_answers": ["2003", "1999", "1993"],
+      "options": ["1996", "2003", "1999", "1993"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Board Games",
+      "question": "Hur många pjäser finns på brädet i början av ett schackspel?",
+      "correct_answer": "32",
+      "incorrect_answers": ["16", "20", "36"],
+      "options": ["32", "16", "20", "36"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Board Games",
+      "question": "Hur många prickar finns på en enda tärning?",
+      "correct_answer": "21",
+      "incorrect_answers": ["24", "15", "18"],
+      "options": ["21", "24", "15", "18"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Board Games",
+      "question": "När släpptes brädspelet Twister till allmänheten?",
+      "correct_answer": "April 1966",
+      "incorrect_answers": ["September 1965", "Januari 1969", "Februari 1966"],
+      "options": ["April 1966", "September 1965", "Januari 1969", "Februari 1966"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Board Games",
+      "question": "Hur många tärningar används i spelet Yatzy?",
+      "correct_answer": "Fem",
+      "incorrect_answers": ["Fyra", "Sex", "Åtta"],
+      "options": ["Fem", "Fyra", "Sex", "Åtta"]
+    }
+  ]
+}

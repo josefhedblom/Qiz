@@ -1,0 +1,94 @@
+{
+  "results": [
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: Film",
+      "question": "Den här filmen innehåller citatet, \"Jag älskar lukten av napalm på morgonen!\"",
+      "correct_answer": "Apocalypse Now",
+      "incorrect_answers": ["Platoon", "The Deer Hunter", "Full Metal Jacket"],
+      "options": ["Apocalypse Now", "Platoon", "The Deer Hunter", "Full Metal Jacket"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: Film",
+      "question": "I vilken film från 1973 spelar Yul Brynner en robotcowboy som får tekniska problem och går på en mordturné?",
+      "correct_answer": "Westworld",
+      "incorrect_answers": ["Runaway", "Android", "The Terminators"],
+      "options": ["Westworld", "Runaway", "Android", "The Terminators"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: Film",
+      "question": "Mark Wahlberg spelade huvudrollen i vilken 2008 års film baserad på ett videospel?",
+      "correct_answer": "Max Payne",
+      "incorrect_answers": ["Alan Wake", "Hitman", "God Of War"],
+      "options": ["Max Payne", "Alan Wake", "Hitman", "God Of War"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: Film",
+      "question": "Vem framförde öppningstemat till James Bond 007-filmen 'Goldfinger'?",
+      "correct_answer": "Shirley Bassey",
+      "incorrect_answers": ["Tom Jones", "John Barry", "Sheena Easton"],
+      "options": ["Shirley Bassey", "Tom Jones", "John Barry", "Sheena Easton"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: Film",
+      "question": "Vilken av dessa Disneyklassiker släpptes 1970?",
+      "correct_answer": "The Aristocats",
+      "incorrect_answers": ["One Hundred and One Dalmatians", "The Fox and the Hound", "The Little Mermaid"],
+      "options": ["The Aristocats", "One Hundred and One Dalmatians", "The Fox and the Hound", "The Little Mermaid"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: Film",
+      "question": "Velma Kelly och Roxie Hart är huvudpersonerna i vilken Oscar-belönad film?",
+      "correct_answer": "Chicago",
+      "incorrect_answers": ["Dreamgirls", "Cabaret", "All That Jazz"],
+      "options": ["Chicago", "Dreamgirls", "Cabaret", "All That Jazz"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: Film",
+      "question": "Johnny Depp gjorde sin storfilmsdebut i vilken film?",
+      "correct_answer": "A Nightmare on Elm Street",
+      "incorrect_answers": ["My Bloody Valentine", "Halloween", "Friday the 13th"],
+      "options": ["A Nightmare on Elm Street", "My Bloody Valentine", "Halloween", "Friday the 13th"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: Film",
+      "question": "Vilket år kom James Camerons film 'Titanic' ut på bio?",
+      "correct_answer": "1997",
+      "incorrect_answers": ["1996", "1998", "1999"],
+      "options": ["1997", "1996", "1998", "1999"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: Film",
+      "question": "Vilken av följande James Bond-skurkar är inte kopplad till SPECTRE-organisationen?",
+      "correct_answer": "Auric Goldfinger",
+      "incorrect_answers": ["Dr. Julius No", "Rosa Klebb", "Emilio Largo"],
+      "options": ["Auric Goldfinger", "Dr. Julius No", "Rosa Klebb", "Emilio Largo"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: Film",
+      "question": "Vilken skådespelare spelade huvudrollen i filmen från 1990 'Edward Scissorhands'?",
+      "correct_answer": "Johnny Depp",
+      "incorrect_answers": ["Clint Eastwood", "Leonardo DiCaprio", "Ben Stiller"],
+      "options": ["Johnny Depp", "Clint Eastwood", "Leonardo DiCaprio", "Ben Stiller"]
+    }
+  ]
+}

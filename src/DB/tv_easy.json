@@ -1,0 +1,94 @@
+{
+  "results": [
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Television",
+      "question": "I vilken delstat i USA föddes och växte Fresh Prince of Bel-Air upp?",
+      "correct_answer": "Pennsylvania",
+      "incorrect_answers": ["Florida", "Kalifornien", "New Jersey"],
+      "options": ["Pennsylvania", "Florida", "Kalifornien", "New Jersey"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Television",
+      "question": "I Star Trek: The Next Generation, vad heter Datas katt?",
+      "correct_answer": "Spot",
+      "incorrect_answers": ["Mittens", "Tom", "Kitty"],
+      "options": ["Spot", "Mittens", "Tom", "Kitty"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Television",
+      "question": "I serien \"Tengen Toppa Gurren Lagann\", vad heter karaktären som tvingar alla att leva under jorden?",
+      "correct_answer": "Lordgenome",
+      "incorrect_answers": ["Kingloname", "Lord Genome", "King Loname"],
+      "options": ["Lordgenome", "Kingloname", "Lord Genome", "King Loname"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Television",
+      "question": "Vem spelade Agent Fox Mulder i TV-sci-fi dramat \"The X-Files\"?",
+      "correct_answer": "David Duchovny",
+      "incorrect_answers": ["Gillian Anderson", "Robert Patrick", "Mitch Pileggi"],
+      "options": ["David Duchovny", "Gillian Anderson", "Robert Patrick", "Mitch Pileggi"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Television",
+      "question": "Serien \"Psycho\" på YouTube skapades av vem av följande?",
+      "correct_answer": "RiDGiD STUDiOS",
+      "incorrect_answers": ["Dan Bell", "Billy Familia", "VeganGainz"],
+      "options": ["RiDGiD STUDiOS", "Dan Bell", "Billy Familia", "VeganGainz"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Television",
+      "question": "I TV-serien 'M*A*S*H', vad var smeknamnet på Corporal Walter O'Reilly?",
+      "correct_answer": "Radar",
+      "incorrect_answers": ["Hawkeye", "Hot Lips", "Trapper"],
+      "options": ["Radar", "Hawkeye", "Hot Lips", "Trapper"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Television",
+      "question": "Vem är stjärnan i AMC-serien Breaking Bad?",
+      "correct_answer": "Walter White",
+      "incorrect_answers": ["Saul Goodman", "Jesse Pinkman", "Skyler White"],
+      "options": ["Walter White", "Saul Goodman", "Jesse Pinkman", "Skyler White"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Television",
+      "question": "I Two and a Half Men, vad heter Alan Harpers son?",
+      "correct_answer": "Jake",
+      "incorrect_answers": ["John", "Jeremy", "James"],
+      "options": ["Jake", "John", "Jeremy", "James"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Television",
+      "question": "Hur många säsonger hade sci-fi TV-serien \"Stargate Universe\"?",
+      "correct_answer": "2",
+      "incorrect_answers": ["10", "5", "3"],
+      "options": ["2", "10", "5", "3"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Television",
+      "question": "I NBC:s show Community, vems catchphrase var \"Pop! Pop!\"?",
+      "correct_answer": "Magnitude",
+      "incorrect_answers": ["Star Burns", "Leonard", "Senior Chang"],
+      "options": ["Magnitude", "Star Burns", "Leonard", "Senior Chang"]
+    }
+  ]
+}

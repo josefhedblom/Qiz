@@ -1,0 +1,94 @@
+{
+  "results": [
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: Musik",
+      "question": "Vilket år släpptes albumet 'Floral Shoppe' av Macintosh Plus?",
+      "correct_answer": "2011",
+      "incorrect_answers": ["2014", "2013", "2012"],
+      "options": ["2011", "2014", "2013", "2012"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: Musik",
+      "question": "Chino Moreno är sångare i vilket alternativ metalband?",
+      "correct_answer": "Deftones",
+      "incorrect_answers": ["Tool", "Korn", "Type O Negative"],
+      "options": ["Deftones", "Tool", "Korn", "Type O Negative"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: Musik",
+      "question": "Panic! At the Disco's sjätte album 'Pray For The Wicked' släpptes på vilket datum?",
+      "correct_answer": "22 juni 2018",
+      "incorrect_answers": ["9 maj 2018", "13 mars 2018", "21 februari 2018"],
+      "options": ["22 juni 2018", "9 maj 2018", "13 mars 2018", "21 februari 2018"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: Musik",
+      "question": "Vad är den brittiska termen för en 64:e not?",
+      "correct_answer": "Hemidemisemiquaver",
+      "incorrect_answers": ["Semihemidemisemiquaver", "Semiquaver", "Demisemiquaver"],
+      "options": ["Hemidemisemiquaver", "Semihemidemisemiquaver", "Semiquaver", "Demisemiquaver"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: Musik",
+      "question": "Vilken av dessa låtar finns INTE med på Suicide Squad OST?",
+      "correct_answer": "Skies on Fire - AC/DC",
+      "incorrect_answers": ["Heathens - Twenty One Pilots", "Without Me - Eminem", "Fortunate Son - Creedence Clearwater Revival"],
+      "options": ["Skies on Fire - AC/DC", "Heathens - Twenty One Pilots", "Without Me - Eminem", "Fortunate Son - Creedence Clearwater Revival"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: Musik",
+      "question": "På vilket M83-album finns låten 'Midnight City'?",
+      "correct_answer": "Hurry Up, We're Dreaming",
+      "incorrect_answers": ["Saturdays = Youth", "Before the Dawn Heals Us", "Junk"],
+      "options": ["Hurry Up, We're Dreaming", "Saturdays = Youth", "Before the Dawn Heals Us", "Junk"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: Musik",
+      "question": "När dog rapparen Eazy-E?",
+      "correct_answer": "26 mars 1995",
+      "incorrect_answers": ["11 juli 1992", "14 februari 1993", "21 oktober 1994"],
+      "options": ["26 mars 1995", "11 juli 1992", "14 februari 1993", "21 oktober 1994"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: Musik",
+      "question": "'All the Boys' av Panic! At the Disco släpptes som en bonuslåt på vilket album?",
+      "correct_answer": "Too Weird To Live, Too Rare To Die!",
+      "incorrect_answers": ["A Fever You Can't Sweat Out", "Death Of A Bachelor", "Vices & Virtues"],
+      "options": ["Too Weird To Live, Too Rare To Die!", "A Fever You Can't Sweat Out", "Death Of A Bachelor", "Vices & Virtues"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: Musik",
+      "question": "Vilket företag gjorde animationerna för Peter Gabriels video 'Sledgehammer' (1986)?",
+      "correct_answer": "Aardman Animations",
+      "incorrect_answers": ["HIT Entertainment", "Illumination Entertainment", "VIZ Media"],
+      "options": ["Aardman Animations", "HIT Entertainment", "Illumination Entertainment", "VIZ Media"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: Musik",
+      "question": "Vad hette rockbandet som Nobuo Uematsu bildade och som spelade låtar från olika Final Fantasy-spel?",
+      "correct_answer": "The Black Mages",
+      "incorrect_answers": ["The Final Fantasies", "The Espers", "The Rock Summoners"],
+      "options": ["The Black Mages", "The Final Fantasies", "The Espers", "The Rock Summoners"]
+    }
+  ]
+}

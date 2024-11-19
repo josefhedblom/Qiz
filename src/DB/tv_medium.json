@@ -1,0 +1,94 @@
+{
+  "results": [
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: TV",
+      "question": "I 'The Simpsons', vad är det riktiga namnet på 'Comic Book Guy'?",
+      "correct_answer": "Jeff Albertson",
+      "incorrect_answers": ["Comic Book Guy", "Edward Stone", "Jack Richardson"],
+      "options": ["Jeff Albertson", "Comic Book Guy", "Edward Stone", "Jack Richardson"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: TV",
+      "question": "I TV-serien 'Person of Interest', vem spelar rollen som 'Harold Finch'?",
+      "correct_answer": "Michael Emerson",
+      "incorrect_answers": ["Jim Caviezel", "Taraji P. Henson", "Kevin Chapman"],
+      "options": ["Michael Emerson", "Jim Caviezel", "Taraji P. Henson", "Kevin Chapman"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: TV",
+      "question": "Alan Reed är känd för att ha gjort rösten till vilken karaktär?",
+      "correct_answer": "Fred Flintstone",
+      "incorrect_answers": ["Bugs Bunny", "Fangface", "G.I. Joe"],
+      "options": ["Fred Flintstone", "Bugs Bunny", "Fangface", "G.I. Joe"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: TV",
+      "question": "I vilket avsnitt av 'Mr. Bean' försöker han hindra folk från att se honom naken?",
+      "correct_answer": "Mr. Bean in Room 426",
+      "incorrect_answers": ["Mr. Bean Goes to Town", "The Trouble with Mr. Bean", "Back to School Mr. Bean"],
+      "options": ["Mr. Bean in Room 426", "Mr. Bean Goes to Town", "The Trouble with Mr. Bean", "Back to School Mr. Bean"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: TV",
+      "question": "I Breaking Bad, vad står initialerna W.W. för?",
+      "correct_answer": "Walter White",
+      "incorrect_answers": ["William Wolf", "Willy Wonka", "Wally Walrus"],
+      "options": ["Walter White", "William Wolf", "Willy Wonka", "Wally Walrus"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: TV",
+      "question": "Vad heter huvudantagonisterna i Battlestar Galactica?",
+      "correct_answer": "The Cylons",
+      "incorrect_answers": ["The Collective", "The Federation", "The Rebels"],
+      "options": ["The Cylons", "The Collective", "The Federation", "The Rebels"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: TV",
+      "question": "I NBC-showen Community, vad var Star Burns' riktiga namn?",
+      "correct_answer": "Alex",
+      "incorrect_answers": ["Todd", "Neal", "Grimus"],
+      "options": ["Alex", "Todd", "Neal", "Grimus"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: TV",
+      "question": "I den ursprungliga Doctor Who-serien (1963), hur lång var den fjärde doktorns halsduk?",
+      "correct_answer": "7 meter",
+      "incorrect_answers": ["10 meter", "2 meter", "5 meter"],
+      "options": ["7 meter", "10 meter", "2 meter", "5 meter"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: TV",
+      "question": "Vilket år slutade den brittiska TV-serien 'The Bill'?",
+      "correct_answer": "2010",
+      "incorrect_answers": ["2001", "2007", "2012"],
+      "options": ["2010", "2001", "2007", "2012"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: TV",
+      "question": "Från vilken show kommer karaktären 'James Doakes'?",
+      "correct_answer": "Dexter",
+      "incorrect_answers": ["Marvel's Daredevil", "Boardwalk Empire", "The Walking Dead"],
+      "options": ["Dexter", "Marvel's Daredevil", "Boardwalk Empire", "The Walking Dead"]
+    }
+  ]
+}

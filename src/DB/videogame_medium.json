@@ -1,0 +1,94 @@
+{
+  "results": [
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: Videospel",
+      "question": "Vad heter Ice Climbers i videospelspelet Ice Climber?",
+      "correct_answer": "Popo och Nana",
+      "incorrect_answers": ["Popo och Nina", "Papi och Nana", "Papi och Nina"],
+      "options": ["Popo och Nana", "Popo och Nina", "Papi och Nana", "Papi och Nina"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: Videospel",
+      "question": "I vilken motor är Titanfall gjort?",
+      "correct_answer": "Source Engine",
+      "incorrect_answers": ["Frostbite 3", "Unreal Engine", "Cryengine"],
+      "options": ["Source Engine", "Frostbite 3", "Unreal Engine", "Cryengine"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: Videospel",
+      "question": "Vilken Crypt of the NecroDancer (2015) karaktär har ett soundtrack av Jake \"Virt\" Kaufman?",
+      "correct_answer": "Uncle Eli",
+      "incorrect_answers": ["Cadence", "Nocturna", "Octavian (Bard)"],
+      "options": ["Uncle Eli", "Cadence", "Nocturna", "Octavian (Bard)"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: Videospel",
+      "question": "Exklusive deras instruktör, hur många medlemmar finns det i Klass VII i spelet 'Legend of Heroes: Trails of Cold Steel'?",
+      "correct_answer": "9",
+      "incorrect_answers": ["6", "10", "3"],
+      "options": ["9", "6", "10", "3"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: Videospel",
+      "question": "Vilken av dessa är INTE en spelbar karaktärsras i videospelspelet 'Starbound'?",
+      "correct_answer": "Fenerox",
+      "incorrect_answers": ["Floran", "Novakid", "Hylotl"],
+      "options": ["Fenerox", "Floran", "Novakid", "Hylotl"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: Videospel",
+      "question": "I spelet 'Undertale', vem var Mettatons skapare?",
+      "correct_answer": "Alphys",
+      "incorrect_answers": ["Undyne", "Sans", "Asgore"],
+      "options": ["Alphys", "Undyne", "Sans", "Asgore"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: Videospel",
+      "question": "Vad heter Cream the Rabbits mamma i 'Sonic the Hedgehog' serien?",
+      "correct_answer": "Vanilla",
+      "incorrect_answers": ["Peach", "Strawberry", "Mint"],
+      "options": ["Vanilla", "Peach", "Strawberry", "Mint"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: Videospel",
+      "question": "I vilken ordning måste du träffa Deku Scrubs för att öppna den första bossdörren i 'Ocarina of Time'?",
+      "correct_answer": "2, 3, 1",
+      "incorrect_answers": ["1, 2, 3", "1, 3, 2", "2, 1, 3"],
+      "options": ["2, 3, 1", "1, 2, 3", "1, 3, 2", "2, 1, 3"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: Videospel",
+      "question": "När lanserades Club Penguin?",
+      "correct_answer": "24 oktober 2005",
+      "incorrect_answers": ["21 oktober 2005", "29 mars 2006", "22 november 2004"],
+      "options": ["24 oktober 2005", "21 oktober 2005", "29 mars 2006", "22 november 2004"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: Videospel",
+      "question": "Vilken CoD 'Deathstreak' är endast med i Call of Duty: Modern Warfare 2?",
+      "correct_answer": "Copycat",
+      "incorrect_answers": ["Martrydom", "Final Stand", "Revenge"],
+      "options": ["Copycat", "Martrydom", "Final Stand", "Revenge"]
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "results": [
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: TV",
+      "question": "I 'Star Trek', vilken sås används ofta av Klingoner på bregit lung?",
+      "correct_answer": "Grapok sås",
+      "incorrect_answers": ["Gazorpazorp pudding", "Söt chilipasta", "Grapork sås"],
+      "options": ["Grapok sås", "Gazorpazorp pudding", "Söt chilipasta", "Grapork sås"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: TV",
+      "question": "Vilken av dessa röster var inte ett alternativ för hus-AI:et i 'The Simpsons Treehouse of Horror' kortfilmen 'House of Whacks'?",
+      "correct_answer": "George Clooney",
+      "incorrect_answers": ["Matthew Perry", "Dennis Miller", "Pierce Brosnan"],
+      "options": ["George Clooney", "Matthew Perry", "Dennis Miller", "Pierce Brosnan"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: TV",
+      "question": "Vad var kallelsen för befälhavare William Adama i Battlestar Galactica (2004)?",
+      "correct_answer": "Husker",
+      "incorrect_answers": ["Starbuck", "Apollo", "Crashdown"],
+      "options": ["Husker", "Starbuck", "Apollo", "Crashdown"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: TV",
+      "question": "Temat för den populära science fiction-serien 'Doctor Who' komponerades av vem?",
+      "correct_answer": "Ron Grainer",
+      "incorrect_answers": ["Murray Gold", "Delia Derbyshire", "Peter Howell"],
+      "options": ["Ron Grainer", "Murray Gold", "Delia Derbyshire", "Peter Howell"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: TV",
+      "question": "I 'It's Always Sunny in Philadelphia', vad hette Franks brottningspersona?",
+      "correct_answer": "The Trash Man",
+      "incorrect_answers": ["Bird of War", "Day Man", "The Maniac"],
+      "options": ["The Trash Man", "Bird of War", "Day Man", "The Maniac"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: TV",
+      "question": "Vilken före detta skådespelerska från Coronation Street var en gång programledare för det brittiska tv-spelet 'Double Your Money'?",
+      "correct_answer": "Amanda Barrie",
+      "incorrect_answers": ["Sue Nicholls", "Violet Carson", "Jean Alexander"],
+      "options": ["Amanda Barrie", "Sue Nicholls", "Violet Carson", "Jean Alexander"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: TV",
+      "question": "Vem spelade sol-bebisen i den ursprungliga versionen av Teletubbies?",
+      "correct_answer": "Jessica Smith",
+      "incorrect_answers": ["Pui Fan Lee", "Sue Monroe", "Lisa Brockwell"],
+      "options": ["Jessica Smith", "Pui Fan Lee", "Sue Monroe", "Lisa Brockwell"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: TV",
+      "question": "Vilken av följande skådespelare porträtterade den nionde doktorn i den brittiska TV-serien 'Doctor Who'?",
+      "correct_answer": "Christopher Eccleston",
+      "incorrect_answers": ["David Tennant", "Matt Smith", "Tom Baker"],
+      "options": ["Christopher Eccleston", "David Tennant", "Matt Smith", "Tom Baker"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: TV",
+      "question": "I Star Trek, vad heter Spocks far?",
+      "correct_answer": "Sarek",
+      "incorrect_answers": ["Tuvok", "T'Pal", "Surak"],
+      "options": ["Sarek", "Tuvok", "T'Pal", "Surak"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: TV",
+      "question": "Vad var datumet för den ursprungliga sändningen av pilotavsnittet av My Little Pony: Friendship is Magic?",
+      "correct_answer": "10 oktober 2010",
+      "incorrect_answers": ["6 november 2010", "14 april 1984", "18 maj 2015"],
+      "options": ["10 oktober 2010", "6 november 2010", "14 april 1984", "18 maj 2015"]
+    }
+  ]
+}

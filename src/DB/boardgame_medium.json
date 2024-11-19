@@ -1,0 +1,103 @@
+{
+  "results": [
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: Brädspel",
+      "question": "Vem är huvudpersonen i VHS-bandet som ingår i brädspelet Nightmare?",
+      "correct_answer": "The Gatekeeper",
+      "incorrect_answers": ["The Kryptkeeper", "The Monster", "The Nightmare"],
+      "options": ["The Gatekeeper", "The Kryptkeeper", "The Monster", "The Nightmare"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: Brädspel",
+      "question": "Vilket år introducerades kortspelet Magic: the Gathering?",
+      "correct_answer": "1993",
+      "incorrect_answers": ["1987", "1998", "2003"],
+      "options": ["1993", "1987", "1998", "2003"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: Brädspel",
+      "question": "I Yu-Gi-Oh, hur utför en spelare en Xyz Summon?",
+      "correct_answer": "Överlapp minst 2 monster på samma nivå",
+      "incorrect_answers": [
+        "Aktivera en spell och skicka monster till gravhögen",
+        "Lägg ihop monstrens nivåer för att matcha Xyz-monstret",
+        "Banish ett antal monster från din hand och däck"
+      ],
+      "options": [
+        "Överlapp minst 2 monster på samma nivå",
+        "Aktivera en spell och skicka monster till gravhögen",
+        "Lägg ihop monstrens nivåer för att matcha Xyz-monstret",
+        "Banish ett antal monster från din hand och däck"
+      ]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: Brädspel",
+      "question": "Hur många poäng är Z-brickan värd i Scrabble?",
+      "correct_answer": "10",
+      "incorrect_answers": ["8", "5", "6"],
+      "options": ["10", "8", "5", "6"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: Brädspel",
+      "question": "I början av ett standardparti av Monopoly, om du slår ett dubbelsex, på vilken ruta hamnar du?",
+      "correct_answer": "Electric Company",
+      "incorrect_answers": ["Water Works", "Chance", "Community Chest"],
+      "options": ["Electric Company", "Water Works", "Chance", "Community Chest"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: Brädspel",
+      "question": "Vilket av följande brädspel är det äldsta?",
+      "correct_answer": "Go",
+      "incorrect_answers": ["Schack", "Mahjong", "Shogi"],
+      "options": ["Go", "Schack", "Mahjong", "Shogi"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: Brädspel",
+      "question": "Europa Universalis är ett strategispel baserat på vilket franskt brädspel?",
+      "correct_answer": "Europa Universalis",
+      "incorrect_answers": ["Europe and the Universe", "Europa!", "Power in Europe"],
+      "options": ["Europa Universalis", "Europe and the Universe", "Europa!", "Power in Europe"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: Brädspel",
+      "question": "I brädspelet Settlers of Catan, vilket tärningsslag orsakar att rånaren attackerar?",
+      "correct_answer": "7",
+      "incorrect_answers": ["3", "10", "1"],
+      "options": ["7", "3", "10", "1"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: Brädspel",
+      "question": "I Schack, vilket två pjäser har drottningen kombinerad rörelse av?",
+      "correct_answer": "Biskop och Torn",
+      "incorrect_answers": ["Torn och Kung", "Riddare och Biskop", "Kung och Riddare"],
+      "options": ["Biskop och Torn", "Torn och Kung", "Riddare och Biskop", "Kung och Riddare"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Underhållning: Brädspel",
+      "question": "Vilken specialartikel skickade skaparna av Cards Against Humanity för sin Black Friday-paket?",
+      "correct_answer": "Bull Feces",
+      "incorrect_answers": ["A Card Expansion", "A Racist Toy", "Cat Urine"],
+      "options": ["Bull Feces", "A Card Expansion", "A Racist Toy", "Cat Urine"]
+    }
+  ]
+}

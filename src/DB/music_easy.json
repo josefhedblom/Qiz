@@ -1,0 +1,94 @@
+{
+  "results": [
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Music",
+      "question": "Vad är inte ett blåsinstrument?",
+      "correct_answer": "Viola",
+      "incorrect_answers": ["Oboe", "Trombon", "Duduk"],
+      "options": ["Viola", "Oboe", "Trombon", "Duduk"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Music",
+      "question": "Vad heter den finska DJ:n Darudes hitsingel som släpptes i oktober 1999?",
+      "correct_answer": "Sandstorm",
+      "incorrect_answers": ["Dust Devil", "Sirocco", "Khamsin"],
+      "options": ["Sandstorm", "Dust Devil", "Sirocco", "Khamsin"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Music",
+      "question": "Vem är sångaren i bandet Coldplay?",
+      "correct_answer": "Chris Martin",
+      "incorrect_answers": ["Chris Isaak", "Chris Wallace", "Chris Connelly"],
+      "options": ["Chris Martin", "Chris Isaak", "Chris Wallace", "Chris Connelly"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Music",
+      "question": "\"Hallelujah\" är en låt skriven av vilken kanadensisk artist?",
+      "correct_answer": "Leonard Cohen",
+      "incorrect_answers": ["Kory Lefkowits", "Ryan Letourneau", "Justin Bieber"],
+      "options": ["Leonard Cohen", "Kory Lefkowits", "Ryan Letourneau", "Justin Bieber"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Music",
+      "question": "Från vilket land kommer låten \"Gangnam Style\"?",
+      "correct_answer": "Sydkorea",
+      "incorrect_answers": ["Japan", "Nordkorea", "Kina"],
+      "options": ["Sydkorea", "Japan", "Nordkorea", "Kina"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Music",
+      "question": "Vilket år släpptes albumet \"Year of the Snitch\" av Death Grips?",
+      "correct_answer": "2018",
+      "incorrect_answers": ["2013", "2017", "2011"],
+      "options": ["2018", "2013", "2017", "2011"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Music",
+      "question": "Från vilket land kommer bandet Rammstein?",
+      "correct_answer": "Tyskland",
+      "incorrect_answers": ["Österrike", "Armenien", "Belgien"],
+      "options": ["Tyskland", "Österrike", "Armenien", "Belgien"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Music",
+      "question": "Vem framförde \"I Took A Pill In Ibiza\"?",
+      "correct_answer": "Mike Posner",
+      "incorrect_answers": ["Avicii", "Robbie Williams", "Harry Styles"],
+      "options": ["Mike Posner", "Avicii", "Robbie Williams", "Harry Styles"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Music",
+      "question": "Vad hette Daft Punks första studioalbum?",
+      "correct_answer": "Homework",
+      "incorrect_answers": ["Discovery", "Random Access Memories", "Human After All"],
+      "options": ["Homework", "Discovery", "Random Access Memories", "Human After All"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Music",
+      "question": "Vem hade en hit 1983 med låten \"Africa\"?",
+      "correct_answer": "Toto",
+      "incorrect_answers": ["Foreigner", "Steely Dan", "Journey"],
+      "options": ["Toto", "Foreigner", "Steely Dan", "Journey"]
+    }
+  ]
+}

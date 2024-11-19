@@ -1,0 +1,94 @@
+{
+  "results": [
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: Film",
+      "question": "I vilken Disneyfilm kan man se karaktären \"Pac-Man\" om man tittar noga på vissa scener?",
+      "correct_answer": "Tron",
+      "incorrect_answers": ["Big Hero 6", "Fantasia", "Monsters, Inc."],
+      "options": ["Tron", "Big Hero 6", "Fantasia", "Monsters, Inc."]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: Film",
+      "question": "För att spara pengar, vad betalades de flesta statisterna i Mad Max (1979) med?",
+      "correct_answer": "Öl",
+      "incorrect_answers": ["Snabbmat", "Matkuponger", "De fick inte betalt"],
+      "options": ["Öl", "Snabbmat", "Matkuponger", "De fick inte betalt"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: Film",
+      "question": "Vilken var den första filmen att använda en Wilhelm Scream?",
+      "correct_answer": "Distant Drums",
+      "incorrect_answers": ["Treasure of the Sierra Madre", "The Charge at Feather River", "Indiana Jones"],
+      "options": ["Distant Drums", "Treasure of the Sierra Madre", "The Charge at Feather River", "Indiana Jones"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: Film",
+      "question": "Vad var wifi-lösenordet som gavs till Stephen Strange i Doctor Strange?",
+      "correct_answer": "Shambala",
+      "incorrect_answers": ["Peace", "Ancient", "Chakra"],
+      "options": ["Shambala", "Peace", "Ancient", "Chakra"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: Film",
+      "question": "Vilken av följande filmer regisserades av Ivan Reitman, skrevs av Gary Ross, hade Kevin Kline i huvudrollen och släpptes 1993?",
+      "correct_answer": "Dave",
+      "incorrect_answers": ["John", "Will", "Carl"],
+      "options": ["Dave", "John", "Will", "Carl"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: Film",
+      "question": "Vad är arten av \"Predatorn\" i filmen 'Predator' från 1987?",
+      "correct_answer": "Yautja",
+      "incorrect_answers": ["Xenomorph", "Praetorian", "Phocrex"],
+      "options": ["Yautja", "Xenomorph", "Praetorian", "Phocrex"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: Film",
+      "question": "Vilken skådespelerska spelade Dr. Grace Augustine i James Camerons film 'Avatar'?",
+      "correct_answer": "Sigourney Weaver",
+      "incorrect_answers": ["Jessica Chastain", "Melissa Beckett", "Alyssa Monroe"],
+      "options": ["Sigourney Weaver", "Jessica Chastain", "Melissa Beckett", "Alyssa Monroe"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: Film",
+      "question": "I Big Hero 6, vad var Baymaxs rörelser modellerade efter?",
+      "correct_answer": "Babypingviner",
+      "incorrect_answers": ["Babyapor", "Babystrutsar", "Babybjörnar"],
+      "options": ["Babypingviner", "Babyapor", "Babystrutsar", "Babybjörnar"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: Film",
+      "question": "Filmen Mad Max: Fury Road innehåller Dies Irae från vilken kompositörs requiem?",
+      "correct_answer": "Verdi",
+      "incorrect_answers": ["Mozart", "Berlioz", "Brahms"],
+      "options": ["Verdi", "Mozart", "Berlioz", "Brahms"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Underhållning: Film",
+      "question": "Vilken film vann alla kategorier vid den 32:a \"Golden Raspberry Awards\" 2012?",
+      "correct_answer": "Jack and Jill",
+      "incorrect_answers": ["The Girl with the Dragon Tattoo", "Thor", "The King's Speech"],
+      "options": ["Jack and Jill", "The Girl with the Dragon Tattoo", "Thor", "The King's Speech"]
+    }
+  ]
+}

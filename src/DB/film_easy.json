@@ -1,0 +1,103 @@
+{
+  "results": [
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Film",
+      "question": "Vilken av följande skådespelare har endast varit med i en Quentin Tarantino-regisserad film?",
+      "correct_answer": "John Travolta",
+      "incorrect_answers": ["Christoph Waltz", "Harvey Keitel", "Samuel L. Jackson"],
+      "options": ["John Travolta", "Christoph Waltz", "Harvey Keitel", "Samuel L. Jackson"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Film",
+      "question": "Vilket var det första monstret som dök upp tillsammans med Godzilla?",
+      "correct_answer": "Anguirus",
+      "incorrect_answers": ["King Kong", "Mothra", "King Ghidora"],
+      "options": ["Anguirus", "King Kong", "Mothra", "King Ghidora"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Film",
+      "question": "Vilken film från 2016 handlar om att Superman och Batman slåss?",
+      "correct_answer": "Batman v Superman: Dawn of Justice",
+      "incorrect_answers": [
+        "Batman v Superman: Superapocalypse",
+        "Batman v Superman: Black of Knight",
+        "Batman v Superman: Knightfall"
+      ],
+      "options": [
+        "Batman v Superman: Dawn of Justice",
+        "Batman v Superman: Superapocalypse",
+        "Batman v Superman: Black of Knight",
+        "Batman v Superman: Knightfall"
+      ]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Film",
+      "question": "När utspelar sig \"Rogue One: A Star Wars Story\" kronologiskt i serien?",
+      "correct_answer": "Mellan Episod 3 och 4",
+      "incorrect_answers": ["Efter Episod 6", "Före Episod 1", "Mellan Episod 4 och 5"],
+      "options": ["Mellan Episod 3 och 4", "Efter Episod 6", "Före Episod 1", "Mellan Episod 4 och 5"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Film",
+      "question": "I vilken film från 1986 förekommer Queen-låten `A Kind Of Magic`?",
+      "correct_answer": "Highlander",
+      "incorrect_answers": ["Flash Gordon", "Labyrinth", "Howard the Duck"],
+      "options": ["Highlander", "Flash Gordon", "Labyrinth", "Howard the Duck"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Film",
+      "question": "Vad heter ön som \"Jurassic Park\" är byggd på?",
+      "correct_answer": "Isla Nublar",
+      "incorrect_answers": ["Isla Sorna", "Isla Muerta", "Isla Pena"],
+      "options": ["Isla Nublar", "Isla Sorna", "Isla Muerta", "Isla Pena"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Film",
+      "question": "Vilken film innehåller en gigantisk kaninliknande ande med magiska krafter som kan få träd att växa?",
+      "correct_answer": "Min granne Totoro",
+      "incorrect_answers": ["Hop", "Rise of the Guardians", "Alice i Underlandet"],
+      "options": ["Min granne Totoro", "Hop", "Rise of the Guardians", "Alice i Underlandet"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Film",
+      "question": "Vilken animerad film var den första att ha en kändis som röstskådespelare?",
+      "correct_answer": "Aladdin",
+      "incorrect_answers": ["Toy Story", "James och jättepersikan", "Ringaren i Notre Dame"],
+      "options": ["Aladdin", "Toy Story", "James och jättepersikan", "Ringaren i Notre Dame"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Film",
+      "question": "Vilken är den äldsta Disney-filmen?",
+      "correct_answer": "Snövit och de sju dvärgarna",
+      "incorrect_answers": ["Pinocchio", "Dumbo", "Fantasia"],
+      "options": ["Snövit och de sju dvärgarna", "Pinocchio", "Dumbo", "Fantasia"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Film",
+      "question": "Vem regisserade Kill Bill-filmerna?",
+      "correct_answer": "Quentin Tarantino",
+      "incorrect_answers": ["Arnold Schwarzenegger", "David Lean", "Stanley Kubrick"],
+      "options": ["Quentin Tarantino", "Arnold Schwarzenegger", "David Lean", "Stanley Kubrick"]
+    }
+  ]
+}
