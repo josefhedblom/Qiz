@@ -6,6 +6,7 @@ import java.net.*;
 
 public class Player {
 
+    /*
     public Player() {
         try (Socket socket = new Socket("127.0.0.1", 8888);
              PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
@@ -30,12 +31,14 @@ public class Player {
         }
     }
 
-    public void PlayerMulticast () throws IOException{
-        int port = 8888;
-        String ip = "127.0.0.1"; // ändra detta om denna används
+     */
+
+    public Player () throws IOException{
+        int port = 12540;
+        String ip = "234.235.236.237"; // ändra detta om denna används
         InetAddress id = InetAddress.getByName(ip);
         InetSocketAddress group = new InetSocketAddress(id, port);
-        NetworkInterface netif = NetworkInterface.getByName("kolla ip på lanet eller så är det nätverkets ip");
+        NetworkInterface netif = NetworkInterface.getByName("Wireless-AC 3165");
 
         MulticastSocket socket = new MulticastSocket(port);
         socket.joinGroup(group, netif);
@@ -54,7 +57,4 @@ public class Player {
             Player k = new Player();
         }
     }
-
-
-
 }
