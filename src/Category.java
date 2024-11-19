@@ -1,4 +1,5 @@
 import java.io.File;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,7 +18,9 @@ public class Category {
         }
     }
 
-    // public static getCategories hämta alla kategorier
+    public static Collection<String> getCategories(){
+        return CATEGORY_PATHS.keySet();
+    }
 
 
     public static String getCategory(String category) {

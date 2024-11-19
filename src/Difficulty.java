@@ -1,3 +1,4 @@
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,7 +11,9 @@ public class Difficulty {
         DIFFICULTY_LEVEL.put("Svår", "hard");
     }
 
-    // public static getDifficulties hämta all svårighetsnivåer
+    public static Collection<String> getDifficulties(){
+        return DIFFICULTY_LEVEL.keySet();
+    }
 
     public static String getDifficulty(String difficulty) {
         String path = DIFFICULTY_LEVEL.get(difficulty.trim());
