@@ -15,9 +15,9 @@ public class Question {
         this.difficulty = jsonObject.getString("difficulty");
         this.category = jsonObject.getString("category");
         this.question = jsonObject.getString("question");
-        this.options = jsonObject.getJSONArray("options");
         this.correctAnswer = jsonObject.getString("correct_answer");
         this.incorrectAnswers = jsonObject.getJSONArray("incorrect_answers");
+        this.options = jsonObject.getJSONArray("options");
     }
 
     public String getType() {
@@ -36,16 +36,16 @@ public class Question {
         return question;
     }
 
-    public JSONArray getOptions() {
-        return options;
-    }
-
     public String getCorrectAnswer() {
         return correctAnswer;
     }
 
     public JSONArray getIncorrectAnswers() {
         return incorrectAnswers;
+    }
+
+    public JSONArray getOptions() {
+        return options;
     }
 
     @Override
