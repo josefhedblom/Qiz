@@ -7,9 +7,9 @@ public class Demo {
     public Demo(){
         System.out.println("Välj en kategori: Film | Musik | TV | Brädspel");
         Scanner input = new Scanner(System.in);
-        String choice = input.nextLine();
+        String choice = CapitalizeFirstLetter.capitalize(input.nextLine());
         System.out.println("Välj nivå på kategori: Lätt | Medium | Svår");
-        String difficulty = input.nextLine();
+        String difficulty = CapitalizeFirstLetter.capitalize(input.nextLine());
         boolean running = true;
         while (running) {
             switch (choice) {
@@ -60,6 +60,16 @@ public class Demo {
             }
         }
     }
+
+    public class CapitalizeFirstLetter {
+        public static String capitalize(String input) {
+            if (input == null || input.isEmpty()) {
+                return input;
+            }
+            return input.substring(0, 1).toUpperCase() + input.substring(1).toLowerCase();
+        }
+    }
+
     public static void main(String[] args) {
         new Demo();
     }
