@@ -21,7 +21,7 @@ public class Demo {
                     getCategory("Musik",difficulty);
                     running = false;
                     break;
-                case "TV":
+                case "Tv":
                     getCategory("TV",difficulty);
                     running = false;
                     break;
