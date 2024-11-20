@@ -8,7 +8,7 @@ public class Server extends Thread {
     Socket socket = new Socket();
 
     Protocol p = new Protocol();
-    //Databas d = new Databas
+    //Databas d = new Databas();
 
     public Server(Socket socket) {
         this.socket = socket;
