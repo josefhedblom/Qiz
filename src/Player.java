@@ -6,9 +6,10 @@ import java.net.*;
 
 public class Player {
 
-    /*
     public Player() {
-        try (Socket socket = new Socket("127.0.0.1", 8888);
+        int port = 12345;
+        String serverIp = "127.0.0.1"; // byt detta till serverns ip eller kolla om det funkar med datorns egna ip
+        try (Socket socket = new Socket(serverIp, port);
              PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
              BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
              BufferedReader playerIn = new BufferedReader(new InputStreamReader(System.in))) {
@@ -31,27 +32,6 @@ public class Player {
         }
     }
 
-     */
-
-    public Player () throws IOException{
-        int port = 12540;
-        String ip = "234.235.236.237"; // ändra detta om denna används
-        InetAddress id = InetAddress.getByName(ip);
-        InetSocketAddress group = new InetSocketAddress(id, port);
-        NetworkInterface netif = NetworkInterface.getByName("Wireless-AC 3165");
-
-        MulticastSocket socket = new MulticastSocket(port);
-        socket.joinGroup(group, netif);
-
-        byte[] data = new byte[1024];
-
-        while (true) {
-            DatagramPacket packet = new DatagramPacket(data, data.length);
-            socket.receive(packet);
-            String message = new String(packet.getData(), 0 , packet.getLength());
-            System.out.println(message);
-        }
-    }
     public static class Main {
         public static void main(String[] args) throws IOException {
             Player k = new Player();
