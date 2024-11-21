@@ -12,7 +12,7 @@ public class Player {
     private String name;
     private int score;
 
-    public Player(String id, String name) {
+    public Player() {
 
         // byt detta till serverns ip eller kolla om det funkar med datorns egna ip
         try (Socket socket = new Socket("127.0.0.1", 12345);
@@ -23,15 +23,9 @@ public class Player {
             String fromServer;
 
             fromServer = in.readLine();
-            System.out.println(fromServer);
 
             while ((fromPlayer = playerIn.readLine()) != null) {
                 out.println(fromPlayer);
-                System.out.println("du heter " + fromPlayer);
-                fromPlayer = name;
-                System.out.println(id);
-                System.out.println(name);
-                fromServer = in.readLine();
                 System.out.println(fromServer);
             }
         } catch (UnknownHostException e) {
@@ -43,7 +37,7 @@ public class Player {
 
     public static class Main {
         public static void main(String[] args) throws IOException {
-            Player player1 = new Player(); // hitta ett sätt att sätta player id senare
+            Player player1 = new Player();
         }
     }
 }

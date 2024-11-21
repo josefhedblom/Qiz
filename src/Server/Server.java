@@ -2,8 +2,6 @@ package Server;
 
 import java.io.*;
 import java.net.*;
-import java.util.Scanner;
-import org.json.JSONArray;
 
 public class Server extends Thread {
     Socket socket = new Socket();
@@ -24,19 +22,16 @@ public class Server extends Thread {
                 PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
                 BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 ) {
+                String inputLine;
 
-                out.print("welcome to the server " + "skriv ditt namn\n");
-                out.println(p.getOutput(null));
+                out.println(p.processInput(null));
 
-                String playerId;
-                while ((playerId = in.readLine()) != null) {
-                    System.out.println("du heter: " + playerId);
-                    System.out.println("Echo: " + p.getOutput(playerId));
-                    String dbAnswer = p.getOutput(playerId.trim());
-                    out.println(dbAnswer);
+                while ((inputLine = in.readLine()) != null) {
+                    String response = p.processInput(inputLine.trim());
+                    System.out.println(inputLine);
+                    out.println(response);
+
                 }
-
-                socket.close();
 
         } catch (IOException e) {
             throw new RuntimeException(e);
