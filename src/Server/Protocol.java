@@ -4,7 +4,7 @@ public class Protocol {
     final int INITIAL = 0;
     final int INTHELOOP = 1;
 
-    //Database d = new Database();
+    //Server.Database d = new Server.Database();
 
     protected int state = INITIAL;
 

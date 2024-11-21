@@ -3,12 +3,17 @@ package Server;
 import java.io.*;
 import java.net.*;
 import java.util.Scanner;
+import org.json.JSONArray;
 
 public class Server extends Thread {
     Socket socket = new Socket();
 
     Protocol p = new Protocol();
-    //Databas d = new Databas
+    private String film = "Film";
+    private String lätt = "Lätt";
+    //Database d = new Database(film, lätt);
+
+    //JSONArray results = d.loadJSON().getJSONArray("results");
 
     public Server(Socket socket) {
         this.socket = socket;
@@ -20,14 +25,14 @@ public class Server extends Thread {
                 BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 ) {
 
-                out.print("welcome to the server\n");
+                out.print("welcome to the server " + "skriv ditt namn\n");
                 out.println(p.getOutput(null));
 
-                String temp;
-                while ((temp = in.readLine()) != null) {
-                    System.out.println("received: " + temp);
-                    System.out.println("Echo: " + p.getOutput(temp));
-                    String dbAnswer = p.getOutput(temp.trim());
+                String playerId;
+                while ((playerId = in.readLine()) != null) {
+                    System.out.println("du heter: " + playerId);
+                    System.out.println("Echo: " + p.getOutput(playerId));
+                    String dbAnswer = p.getOutput(playerId.trim());
                     out.println(dbAnswer);
                 }
 
@@ -38,4 +43,4 @@ public class Server extends Thread {
         }
 
     }
-    }
+}
