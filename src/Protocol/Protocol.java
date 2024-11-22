@@ -19,13 +19,13 @@ public class Protocol {
         //Waiting for user to connect
         if (state == Waiting) {
             /*
-            if (   Player presses Start Button  ) {
+            if (   Server.Player presses Start Button  ) {
                 state = Player1StartsGame;
             }
              */
         }
 
-        //Player 1 presses start new game
+        //Server.Player 1 presses start new game
         if (state == Player1StartsGame) {
 
             state = Round1Loop;
@@ -72,23 +72,23 @@ public class Protocol {
 
 
     /*
-    Question Loop     x=Round number{
-         Player Given Q1 Rx
-         Player answers Q1 Rx
-         Player Given Q2 Rx
-         Player Answer Q2 Rx
-         Player Given Q3 Rx
-         Player Answers Q3 Rx
+    Server.Question Loop     x=Round number{
+         Server.Player Given Q1 Rx
+         Server.Player answers Q1 Rx
+         Server.Player Given Q2 Rx
+         Server.Player Answer Q2 Rx
+         Server.Player Given Q3 Rx
+         Server.Player Answers Q3 Rx
      */
      /*
      Round Loop   Switch between players for each round
-         Player 1 picks a Category
-         Question Loop for Player 1
-         Player 1 sees their score
-         Player 1 waits
-         Player 2 joins
-         Player 2 Question loop 1
-         Player 2 sees both scores
+         Server.Player 1 picks a Server.Category
+         Server.Question Loop for Server.Player 1
+         Server.Player 1 sees their score
+         Server.Player 1 waits
+         Server.Player 2 joins
+         Server.Player 2 Server.Question loop 1
+         Server.Player 2 sees both scores
      */
     }
 }
