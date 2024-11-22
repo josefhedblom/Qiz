@@ -1,3 +1,5 @@
+package Server;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -50,7 +52,7 @@ public class Question {
 
     @Override
     public String toString() {
-        return "Question{" +
+        return "Server.Question{" +
                 "type='" + type + '\'' +
                 ", difficulty='" + difficulty + '\'' +
                 ", category='" + category + '\'' +
