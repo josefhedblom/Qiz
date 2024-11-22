@@ -3,6 +3,9 @@ package Server;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Protocol {
     private static final int GET_USERNAME = 0;
     private static final int GET_CATEGORY = 1;
@@ -12,81 +15,121 @@ public class Protocol {
     private static final int CHECK_QUESTION = 5;
     private static final int GAME_OVER = 6;
 
-    private User user = new User();
+    private final User user = new User();
+
     private int state = GET_USERNAME;
-    private Database database;
     private JSONArray questionsList = new JSONArray();
-    private String username;
-    private String category;
-    private String difficulty;
-    private String playerQuestion;
     private int currentQuestionIndex = 0;
     private Question question;
     private int score = 0;
+
+    public enum Messages {
+        ENTER_USERNAME("Ange ett användarnamn: "),
+        ENTER_CATEGORY("Ange en kategori: Film | Musik | TV | Brädspel: "),
+        ENTER_DIFFICULTY("Ange en svårighetsgrad: Lätt | Medium | Svår: "),
+        GREET_USER("Hej %s! Välj en kategori: Film | Musik | TV | Brädspel: "),
+        CHOSEN_CATEGORY("Du valde kategorin %s. Ange svårighetsgrad: Lätt | Medium | Svår: "),
+        CHOSEN_DIFFICULTY("Svårighetsgrad vald: %s. Startar frågor..."),
+        QUESTION("Fråga: %d  %s %s : "),
+        RIGHT_ANSWER("Rätt!"),
+        WRONG_ANSWER("Fel! Rätt svar är: %s "),
+        GAME_DONE("Alla frågor är klara!. Tack för att du spelade, %s! Du fick totalt %d poäng!"),
+        ERROR("Ogiltigt tillstånd. Starta om spelet.");
+
+        private final String message;
+
+        Messages(String message) {
+            this.message = message;
+        }
+
+        public String format(Object... args) {
+            return String.format(message, args);
+        }
+    }
 
 
     public String processInput(String input) {
         switch (state) {
             case GET_USERNAME:
-                if (input == null || input.trim().isEmpty()) {
-                    return "Ange ett användarnamn: ";
-                }
-                username = input.trim();
-                this.user.setUsername(username);
-                state = GET_CATEGORY;
-                return "Hej " + username + "! Välj en kategori: Film | Musik | TV | Brädspel: ";
-
+                return handelGetUsername(input);
             case GET_CATEGORY:
-                if (input == null || input.trim().isEmpty()) {
-                    return "Ange en kategori: Film | Musik | TV | Brädspel: ";
-                }
-                category = input.trim();
-                state = GET_DIFFICULTY;
-                return "Du valde kategorin " + category + ". Ange svårighetsgrad: Lätt | Medium | Svår: ";
-
+                return handelGetCategory(input);
             case GET_DIFFICULTY:
-                if (input == null || input.trim().isEmpty()) {
-                    return "Ange en svårighetsgrad: Lätt | Medium | Svår: ";
-                }
-                difficulty = input.trim();
-                state = CONNECT_DATABASE;
-                return "Svårighetsgrad vald: " + difficulty + ". Startar frågor...";
-
+                return handelGetDifficulty(input);
             case CONNECT_DATABASE:
-                if (input == null || input.trim().isEmpty()) {
-                    Database db = new Database(category, difficulty);
-                    this.questionsList = db.loadJSON().getJSONArray("results");
-                }
+                handelConnectDatabase();
             case ASK_QUESTIONS:
-                if(input == null || input.trim().isEmpty()) {
-                    if(currentQuestionIndex < questionsList.length()) {
-                        JSONObject result = this.questionsList.getJSONObject(currentQuestionIndex);
-                        this.question = new Question(result);
-                        playerQuestion = this.question.getQuestion();
-                        JSONArray options = this.question.getOptions();
-                        currentQuestionIndex++;
-                        return "Fråga: " + currentQuestionIndex + " " + playerQuestion + " " + options.toString() + ": ";
-                    } else {
-                        state = GAME_OVER;
-                        return "Alla frågor är klara! Tack för att du spelade!";
-                    }
-                }
-                state = CHECK_QUESTION;
+                return handelAskQuestions(input);
             case CHECK_QUESTION:
-                if (input.equalsIgnoreCase(this.question.getCorrectAnswer())) {
-                    state = ASK_QUESTIONS;
-                    this.score++;
-                    this.user.setScore(this.score);
-                    return "Rätt!";
-                } else {
-                    state = ASK_QUESTIONS;
-                    return "Fel! Rätt svar är: " + this.question.getCorrectAnswer();
-                }
+                return handelCheckQuestions(input);
             case GAME_OVER:
-                return "Spelet är slut. Tack för att du spelade, " + this.user.getUsername() + " du fick totalt " + this.user.getScore() + " poäng!";
-
+                handelGameOver();
             default:
-                return "Ogiltigt tillstånd. Starta om spelet.";
+                return Messages.ERROR.format();
         }
+
+    }
+
+    private String handelGetUsername(String input) {
+        if (isValid(input)) return Messages.ENTER_USERNAME.format();
+        user.setUsername(input);
+        state = GET_CATEGORY;
+        return Messages.GREET_USER.format(user.getUsername());
+    }
+
+    private String handelGetCategory(String input) {
+        if (isValid(input)) return Messages.ENTER_CATEGORY.format();
+        user.setCategory(input.trim());
+        state = GET_DIFFICULTY;
+        return Messages.CHOSEN_CATEGORY.format(user.getCategory());
+    }
+
+    private String handelGetDifficulty(String input) {
+        if (isValid(input)) return Messages.ENTER_DIFFICULTY.format();
+        user.setDifficulty(input.trim());
+        state = CONNECT_DATABASE;
+        return Messages.CHOSEN_DIFFICULTY.format(user.getDifficulty());
+    }
+
+    private void handelConnectDatabase() {
+        Database db = new Database(user.getCategory(), user.getDifficulty());
+        this.questionsList = db.loadJSON().getJSONArray("results");
+        state = ASK_QUESTIONS;
+    }
+
+    private String handelAskQuestions(String input) {
+        if (currentQuestionIndex < questionsList.length()) {
+            this.question = new Question(this.questionsList.getJSONObject(currentQuestionIndex));
+            currentQuestionIndex++;
+            state = CHECK_QUESTION;
+            return Messages.QUESTION.format(currentQuestionIndex, question.getQuestion(), question.getOptions());
+        } else {
+            state = GAME_OVER;
+            return Messages.GAME_DONE.format(user.getUsername(), this.score);
+        }
+    }
+
+    private String handelCheckQuestions(String input) {
+        if (input.equalsIgnoreCase(this.question.getCorrectAnswer())) {
+            state = ASK_QUESTIONS;
+            this.score++;
+            this.user.setScore(this.score);
+            return Messages.RIGHT_ANSWER.format();
+        } else {
+            state = ASK_QUESTIONS;
+            return Messages.WRONG_ANSWER.format(this.question.getCorrectAnswer());
+        }
+    }
+
+    private void handelGameOver() {
+        System.exit(0);
+    }
+
+    private boolean isValid(String input) {
+        return input == null || input.trim().isEmpty();
+    }
+
+    private void setState(int state) {
+        this.state = state;
     }
 }

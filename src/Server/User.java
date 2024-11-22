@@ -3,6 +3,8 @@ package Server;
 public class User {
     private String username;
     private String avatar;
+    private String category;
+    private String difficulty;
     private int score = 0;
 
 
@@ -28,5 +30,21 @@ public class User {
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(String difficulty) {
+        this.difficulty = difficulty;
     }
 }
