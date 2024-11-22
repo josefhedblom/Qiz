@@ -6,8 +6,7 @@ import org.json.JSONObject;
 import java.util.Scanner;
 
 public class Demo {
-    public Demo(){
-        System.out.println("Välj en kategori: Film | Musik | TV | Brädspel");
+    public Demo() {
         Scanner input = new Scanner(System.in);
         String choice = input.nextLine();
         System.out.println("Välj nivå på kategori: Lätt | Medium | Svår");

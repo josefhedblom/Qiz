@@ -11,7 +11,7 @@ public class Player {
     public Player() {
 
         // byt detta till serverns ip eller kolla om det funkar med datorns egna ip
-        try (Socket socket = new Socket("127.0.0.1", 12345);
+        try (Socket socket = new Socket(myIpAdress(), 12345);
              PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
              BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
              BufferedReader playerIn = new BufferedReader(new InputStreamReader(System.in))) {
@@ -19,7 +19,7 @@ public class Player {
             String fromServer;
 
             while ((fromServer = in.readLine()) != null) {
-                System.out.println(fromServer);
+                System.out.print(fromServer);
                 fromPlayer = playerIn.readLine();
                 if (fromPlayer != null){
                     out.println(fromPlayer);
@@ -33,9 +33,19 @@ public class Player {
         }
     }
 
+    public static String myIpAdress() {
+        try {
+            InetAddress localHost = InetAddress.getLocalHost();
+            return localHost.getHostAddress();
+        } catch (UnknownHostException e) {
+            System.err.println("Kunde inte hämta IP-adress: " + e.getMessage());
+        }
+        return "127.0.0.1";
+    }
+
     public static class Main {
         public static void main(String[] args) throws IOException {
-            Player player1 = new Player();
+            new Player();
         }
     }
 }
