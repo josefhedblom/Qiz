@@ -9,6 +9,7 @@ public class JFrameMain extends JFrame {
     static CardLayout cardLayout = new CardLayout();
     static JPanel masterPanel = new JPanel(cardLayout);
 
+
     /*
     Colors
     Purple #7540EE
@@ -31,7 +32,6 @@ public class JFrameMain extends JFrame {
     public void InitializeComponents(){
 
         //End
-        setTitle("Drawing Generator");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setLocationRelativeTo(null);

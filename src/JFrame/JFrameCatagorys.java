@@ -1,5 +1,6 @@
 package JFrame;
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 
 public class JFrameCatagorys extends JPanel {
@@ -37,6 +38,8 @@ public class JFrameCatagorys extends JPanel {
         mainPanel.setBackground(Color.decode(cPurple));
         mainPanel.setPreferredSize(new Dimension(800, 600));
         mainPanel.setVisible(true);
+        Border border = BorderFactory.createLineBorder(Color.decode(cBlack), 15);
+        mainPanel.setBorder(border);
 
         // Top Panel
         topPanel.setLayout(new FlowLayout(FlowLayout.CENTER,0,100));

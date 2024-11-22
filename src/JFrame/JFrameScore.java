@@ -1,6 +1,7 @@
 package JFrame;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
@@ -36,7 +37,7 @@ public class JFrameScore extends JPanel {
     JPanel centerCenterPanel = new JPanel();
     JPanel p1RoundListPanel = new JPanel();
     JPanel p2RoundListPanel = new JPanel();
-    JPanel winnerRoundListPanel = new JPanel();
+    JPanel roundWonPanel = new JPanel();
     JPanel userNamesPanel = new JPanel();
     JPanel userPicturePanel = new JPanel();
 
@@ -52,6 +53,9 @@ public class JFrameScore extends JPanel {
     public void InitializeComponents() {
         // Main panel
         mainPanel.setLayout(new BorderLayout());
+        mainPanel.setBackground(Color.decode(cPurple));
+        Border border = BorderFactory.createLineBorder(Color.decode(cBlack), 15);
+        mainPanel.setBorder(border);
 
         // Top Panel
         topPanel.setLayout(new FlowLayout());
@@ -76,12 +80,8 @@ public class JFrameScore extends JPanel {
         // Score Panels
         ScorePanel(p1RoundListPanel);  // Player 1 Score Panel
         ScorePanel(p2RoundListPanel);  // Player 2 Score Panel
+        RoundWonPanel(roundWonPanel);
 
-        // Middle Empty Panel
-        winnerRoundListPanel.setBackground(Color.decode(cPurple));
-        winnerRoundListPanel.setPreferredSize(new Dimension(100, 400));
-        winnerRoundListPanel.setBorder(BorderFactory.createLineBorder(Color.decode(cBlack), 2));
-        winnerRoundListPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
 
         // User Pictures and Names
         userCustomize.userProfile(user1Picture,user1Name,player1UserName);
@@ -107,7 +107,7 @@ public class JFrameScore extends JPanel {
         centerCenterPanel.add(Box.createHorizontalStrut(200)); // Add spacing before Player 1 panel
         centerCenterPanel.add(p1RoundListPanel);
         centerCenterPanel.add(Box.createHorizontalStrut(40)); // Adds spacing between panels
-        centerCenterPanel.add(winnerRoundListPanel);
+        centerCenterPanel.add(roundWonPanel);
         centerCenterPanel.add(Box.createHorizontalStrut(40)); // Adds spacing between panels
         centerCenterPanel.add(p2RoundListPanel);
         centerCenterPanel.add(Box.createHorizontalStrut(200)); // Add spacing after Player 2 panel
@@ -151,6 +151,7 @@ public class JFrameScore extends JPanel {
     }
 
 
+    //Generates the dots for each player
     public void ScorePanel(JPanel panel) {
 
         panel.setBackground(Color.decode(cPurple));
@@ -162,12 +163,55 @@ public class JFrameScore extends JPanel {
         for (int i = 0; i < 18; i++) {
             JLabel questionDot = new JLabel("⚫");
             questionDot.setFont(new Font("Garamond", Font.BOLD, 80)); // Smaller dots for narrower width
-            questionDot.setForeground(Color.decode(cBlack));
+
+            //This determines the color, We can change them to list or another way to save the answers
+            if (i == 2){
+                questionDot.setForeground(Color.decode(cYellow));
+
+            } else if (i == 3) {
+                questionDot.setForeground(Color.decode(cRed));
+
+            }else {
+                questionDot.setForeground(Color.decode(cBlack));
+            }
+
             questionDot.setHorizontalAlignment(SwingConstants.CENTER);
 
             panel.add(questionDot);
         }
         repaint();
         revalidate();
+    }
+    public  void RoundWonPanel (JPanel panel) {
+
+        panel.setBackground(Color.decode(cPurple));
+        panel.setVisible(true);
+
+        // Set GridLayout with reduced gaps
+        panel.setLayout(new GridLayout(6, 1, 1, 1)); // 2px horizontal gap, 5px vertical gap
+
+        for (int i = 0; i < 6; i++) {
+            JLabel questionDot = new JLabel("⚫");
+            questionDot.setFont(new Font("Garamond", Font.BOLD, 80)); // Smaller dots for narrower width
+
+            //This determines the color, We can change them to list or another way to save the answers
+            if (i == 2){
+                questionDot.setForeground(Color.decode(cYellow));
+
+            } else if (i == 3) {
+                questionDot.setForeground(Color.decode(cRed));
+
+            }else {
+                questionDot.setForeground(Color.decode(cBlack));
+            }
+
+            questionDot.setHorizontalAlignment(SwingConstants.CENTER);
+
+            panel.add(questionDot);
+        }
+        repaint();
+        revalidate();
+
+
     }
 }

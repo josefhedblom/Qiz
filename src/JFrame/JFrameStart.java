@@ -1,6 +1,8 @@
 package JFrame;
 
 import javax.swing.*;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
@@ -14,8 +16,7 @@ public class JFrameStart extends JPanel {
     public JFrameStart(){
         //Set Layout and Color for the Main main panel
         setLayout(new BorderLayout());
-        setBackground(Color.decode(cPurple));
-
+        setBackground(Color.decode(cBlack));
         InitializeComponents();
 
     }
@@ -41,7 +42,8 @@ public class JFrameStart extends JPanel {
         mainPanel.setBackground(Color.decode(cPurple));
         mainPanel.setPreferredSize(new Dimension(800, 600));
         mainPanel.setVisible(true);
-
+        Border border = BorderFactory.createLineBorder(Color.decode(cBlack), 15);
+        mainPanel.setBorder(border);
         //Top Panel
         topPanel.setLayout(new FlowLayout());
         topPanel.setBackground(Color.decode(cPurple));
@@ -55,7 +57,7 @@ public class JFrameStart extends JPanel {
         centerPanel.setLayout(new BorderLayout());
         centerPanel.setBackground(Color.decode(cPurple));
         centerPanel.setPreferredSize(new Dimension(800, 600));
-        centerCenterPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        centerCenterPanel.setLayout(new GridBagLayout());
         centerCenterPanel.setBorder(new EmptyBorder(300, 0, 0, 0)); // Top padding of 100px
         centerCenterPanel.setBackground(Color.decode(cPurple));
         centerTopPanel.setBackground(Color.decode(cPurple));
