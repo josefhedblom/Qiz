@@ -1,10 +1,7 @@
 package Server;
 
 import org.json.JSONArray;
-import org.json.JSONObject;
 
-import java.util.HashMap;
-import java.util.Map;
 
 public class Protocol {
     private static final int GET_USERNAME = 0;
@@ -18,10 +15,10 @@ public class Protocol {
     private final User user = new User();
 
     private int state = GET_USERNAME;
-    private JSONArray questionsList = new JSONArray();
     private int currentQuestionIndex = 0;
-    private Question question;
     private int score = 0;
+    private JSONArray questionsList = new JSONArray();
+    private Question question;
 
     public enum Messages {
         ENTER_USERNAME("Ange ett användarnamn: "),
@@ -127,9 +124,5 @@ public class Protocol {
 
     private boolean isValid(String input) {
         return input == null || input.trim().isEmpty();
-    }
-
-    private void setState(int state) {
-        this.state = state;
     }
 }
