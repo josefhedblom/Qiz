@@ -9,7 +9,11 @@ public class Category {
     private static final Map<String, String> CATEGORY_PATHS = new HashMap<>();
 
     static {
-        addCategories("Brädspel", "Film", "Musik", "TV", "TV Spel");
+        CATEGORY_PATHS.put("Brädspel", "boardgame");
+        CATEGORY_PATHS.put("Film", "film");
+        CATEGORY_PATHS.put("Musik", "music");
+        CATEGORY_PATHS.put("TV", "tv");
+        CATEGORY_PATHS.put("TV Spel", "videogame");
     }
 
     private static void addCategories(String... categories) {
@@ -23,8 +27,8 @@ public class Category {
 
 
     public static String getCategory(String category) {
-        String path = CATEGORY_PATHS.get(category.trim());
-        if (path == null) {
+        String path = BASE_PATH + CATEGORY_PATHS.get(category.trim());
+        if (path.isEmpty()) {
             throw new IllegalArgumentException("Ogiltig kategori: " + category);
         }
         return path;

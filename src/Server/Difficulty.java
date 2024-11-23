@@ -16,7 +16,7 @@ public class Difficulty {
 
     public static String getDifficulty(String difficulty) {
         String path = DIFFICULTY_LEVEL.get(difficulty.trim());
-        if (path == null) {
+        if (path.isEmpty()) {
             throw new IllegalArgumentException("Ogiltig nivå: " + difficulty);
         }
         return path;
