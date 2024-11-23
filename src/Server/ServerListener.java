@@ -22,6 +22,6 @@ public class ServerListener {
         }
     }
     public static void main(String[] args) {
-        ServerListener sl = new ServerListener();
+        new ServerListener();
     }
 }
