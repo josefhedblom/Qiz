@@ -2,10 +2,15 @@ package JFrame;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class JFrameQuestions extends JPanel {
+
+    public static String userPicture ;
+    public static String userName;
 
     String cPurple = "#7540EE";
     String cYellow ="#F4B512";
@@ -37,7 +42,7 @@ public class JFrameQuestions extends JPanel {
     JLabel userNameLabel = new JLabel("User Name");
     JLabel userPictureLabel = new JLabel();
 
-    JLabel questionLabel = new JLabel("Question bla bla bla la ejied sjs");
+    JLabel questionLabel = new JLabel("Question");
 
     //Temp
     JLabel timerLabel = new JLabel("Timer");
@@ -81,7 +86,9 @@ public class JFrameQuestions extends JPanel {
         userPanel.setBackground(Color.decode(cPurple));
         userPanel.setPreferredSize(new Dimension(800, 100));
         userPanel.setLayout(new GridLayout(2,1));
-        userCustomize.userProfile(userPictureLabel,userNameLabel,"Player 1");
+
+        //Here to update username and picture
+        Player.createPlayerLabels(userNameLabel,userPictureLabel,userName,userPicture);
 
         userPanel.add(userPictureLabel);
         userPanel.add(userNameLabel);
@@ -105,8 +112,8 @@ public class JFrameQuestions extends JPanel {
         answersPanel.setPreferredSize(new Dimension(600, 400));
         answersPanel.setLayout(new GridLayout(2,2,10,10));
 
-
-        CategoryButton();
+        //Adds the buttons
+        AnswerButtons();
 
 
         // Add components
@@ -127,11 +134,9 @@ public class JFrameQuestions extends JPanel {
     }
 
 
-    public void CategoryButton () {
+    public void AnswerButtons() {
 
         for (int i = 0; i <= 3; i++) {
-
-
             //Create Button
             JButton button = new JButton();
             //Set Color
@@ -148,12 +153,21 @@ public class JFrameQuestions extends JPanel {
 
 
             //Action listener
-            button.addActionListener(new MyActionListener());
-            //button.setActionCommand("Answer 1");
+            //Here we can save the answer
+            button.addActionListener((ActionListener) e -> {
 
+
+                //If we want it to just reload the whole thing
+                JFrameMain.switchPanel("JFrameQuestions");
+
+                //Something to add if we got the question wrong or right
+                //Maybe just a list of 0 1 2 for "Not Done" "Right" "Wrong"
+
+            });
+
+            //Changes color if button is hovered over
             button.addMouseListener(new MouseAdapter() {
                 Color originalColor = button.getBackground();
-
                 @Override
                 public void mouseEntered(MouseEvent e) {
                     button.setBackground(Color.decode(cYellow)); // Change color on hover

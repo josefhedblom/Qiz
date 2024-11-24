@@ -7,16 +7,20 @@ import java.awt.*;
 
 public class JFrameScore extends JPanel {
 
+    //Customize
+    public static String whoTurnText = "Din tur";
+    public static String user1UserName = "Player 1";
+    public static String user2UserName = "Player 2";
+    public static String user1Picture = "☺";
+    public static String user2Picture = "☺";
+
+
+
     String cPurple = "#7540EE";
     String cYellow ="#F4B512";
     String cRed ="#F95179";
     String cBlack ="#0D071A";
     String cWhite ="#CECECE";
-
-    //Customize
-    public static String whoTurnText = "Din tur";
-    public static String player1UserName = "Player 1";
-    public static String player2UserName = "Player 2";
 
 
     public JFrameScore() {
@@ -43,10 +47,10 @@ public class JFrameScore extends JPanel {
 
     //Labels Button
     JLabel whoTurnLabel = new JLabel(whoTurnText);
-    JLabel user1Picture = new JLabel();
-    JLabel user1Name = new JLabel();
-    JLabel user2Picture = new JLabel();
-    JLabel user2Name = new JLabel();
+    JLabel user1PictureLabel = new JLabel();
+    JLabel user1NameLabel = new JLabel();
+    JLabel user2PictureLabel = new JLabel();
+    JLabel user2NameLabel = new JLabel();
     JButton startButton = new JButton("Start");
 
 
@@ -84,19 +88,21 @@ public class JFrameScore extends JPanel {
 
 
         // User Pictures and Names
-        userCustomize.userProfile(user1Picture,user1Name,player1UserName);
-        userCustomize.userProfile(user2Picture,user2Name,player2UserName);
+        //Here we can add if we want custom names and picture
+        Player.createPlayerLabels(user1PictureLabel, user1NameLabel, user1UserName,user1Picture);
+        Player.createPlayerLabels(user2PictureLabel, user2NameLabel, user2UserName,user2Picture);
+
         userPicturePanel.setLayout(new GridLayout(1, 2, 0, 0)); // Equal spacing for both users
         userPicturePanel.setBorder(new EmptyBorder(0, 60, 0, 60)); //Makes them closer
         userPicturePanel.setBackground(Color.decode(cPurple));
-        userPicturePanel.add(user1Picture);
-        userPicturePanel.add(user2Picture);
+        userPicturePanel.add(user1PictureLabel);
+        userPicturePanel.add(user2PictureLabel);
 
         userNamesPanel.setLayout(new GridLayout(1, 2, 0, 0)); // Align names above pictures
         userNamesPanel.setBorder(new EmptyBorder(0, 60, 0, 60));  //Makes them closer
         userNamesPanel.setBackground(Color.decode(cPurple));
-        userNamesPanel.add(user1Name);
-        userNamesPanel.add(user2Name);
+        userNamesPanel.add(user1NameLabel);
+        userNamesPanel.add(user2NameLabel);
 
         // Add the panels to centerTopPanel
         centerTopPanel.setLayout(new BorderLayout());
@@ -152,6 +158,7 @@ public class JFrameScore extends JPanel {
 
 
     //Generates the dots for each player
+    //Here we add some sort of List to save who won / Lost
     public void ScorePanel(JPanel panel) {
 
         panel.setBackground(Color.decode(cPurple));
@@ -182,6 +189,8 @@ public class JFrameScore extends JPanel {
         repaint();
         revalidate();
     }
+
+    //Same for this
     public  void RoundWonPanel (JPanel panel) {
 
         panel.setBackground(Color.decode(cPurple));

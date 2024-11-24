@@ -2,8 +2,21 @@ package JFrame;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.List;
+
 
 public class JFrameCatagorys extends JPanel {
+
+    //Customize
+    //Here we can add all category's
+    String [] CategoryList = {"Mat","Kändisar","Filmer","Länder","Natur","Spel","Historia"};
+    public static String categorySelected;
+    public static String modeSelected;
+
 
     String cPurple = "#7540EE";
     String cYellow ="#F4B512";
@@ -18,8 +31,8 @@ public class JFrameCatagorys extends JPanel {
         setBackground(Color.decode(cPurple));
 
         InitializeComponents();
-
     }
+    //Panels
     JPanel mainPanel = new JPanel();
     JPanel topPanel = new JPanel();
     JPanel centerPanel = new JPanel();
@@ -28,9 +41,9 @@ public class JFrameCatagorys extends JPanel {
     JPanel eastPanel = new JPanel();
 
     JLabel titleLabel = new JLabel("Välj en kategori");
-    JButton category1Button = new JButton("Category 1");
-    JButton category2Button = new JButton("Category 2");
-    JButton category3Button = new JButton("Category 3");
+    JButton easyModeButton = new JButton("Bebis Mode");
+    JButton mediumModeButton = new JButton("Adult Mode");
+    JButton hardModeButton = new JButton("Old Mode");
 
     public void InitializeComponents() {
         // Main panel
@@ -42,29 +55,59 @@ public class JFrameCatagorys extends JPanel {
         mainPanel.setBorder(border);
 
         // Top Panel
-        topPanel.setLayout(new FlowLayout(FlowLayout.CENTER,0,100));
+        topPanel.setLayout(new FlowLayout(FlowLayout.CENTER,0,50));
         topPanel.setBackground(Color.decode(cPurple));
-        topPanel.setPreferredSize(new Dimension(800, 200));
+        topPanel.setPreferredSize(new Dimension(800, 150));
         // Title
         titleLabel.setBackground(Color.decode(cPurple));
         titleLabel.setForeground(Color.decode(cBlack));
-        titleLabel.setFont(new Font("Garamond", Font.BOLD, 50));
+        titleLabel.setFont(new Font("Garamond", Font.BOLD, 40));
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
         // Center Panel
         centerPanel.setLayout(new GridLayout(3,1,0,40));
         centerPanel.setBackground(Color.decode(cPurple));
-        centerPanel.setPreferredSize(new Dimension(300, 600));
+        centerPanel.setPreferredSize(new Dimension(300, 500));
 
         //Buttons
 
-        CategoryButton(category1Button,"Länder");
-        CategoryButton(category2Button,"Personer");
-        CategoryButton(category3Button,"Djur & Natur");
+        CategoryButton(CategoryList);
 
-        centerPanel.add(category1Button);
-        centerPanel.add(category2Button);
-        centerPanel.add(category3Button);
+        //Mode Buttons
+        easyModeButton.setBackground(Color.decode(cWhite));
+        easyModeButton.setPreferredSize(new Dimension(150, 80));
+        easyModeButton.setFont(new Font("Garamond", Font.BOLD, 20));
+        easyModeButton.setHorizontalAlignment(SwingConstants.CENTER);
+        mediumModeButton.setBackground(Color.decode(cYellow));
+        mediumModeButton.setPreferredSize(new Dimension(150, 80));
+        mediumModeButton.setFont(new Font("Garamond", Font.BOLD, 20));
+        mediumModeButton.setHorizontalAlignment(SwingConstants.CENTER);
+        hardModeButton.setBackground(Color.decode(cRed));
+        hardModeButton.setPreferredSize(new Dimension(150, 80));
+        hardModeButton.setFont(new Font("Garamond", Font.BOLD, 20));
+        hardModeButton.setHorizontalAlignment(SwingConstants.CENTER);
+
+        //action listeners
+        //Save what Mode the question is
+        easyModeButton.addActionListener(e -> {
+            modeSelected = "easy";
+            JFrameMain.switchPanel("JFrameQuestions");
+
+        });
+        mediumModeButton.addActionListener(e -> {
+            JFrameMain.switchPanel("JFrameQuestions");
+
+        });
+        hardModeButton.addActionListener(e -> {
+            JFrameMain.switchPanel("JFrameQuestions");
+
+        });
+
+
+        bottomPanel.setLayout(new GridBagLayout());
+        bottomPanel.add(easyModeButton);
+        bottomPanel.add(mediumModeButton);
+        bottomPanel.add(hardModeButton);
 
 
         // Side Panels
@@ -76,9 +119,8 @@ public class JFrameCatagorys extends JPanel {
         eastPanel.setPreferredSize(new Dimension(500, 600));
 
         // Bottom Panel
-        bottomPanel.setLayout(new FlowLayout());
         bottomPanel.setBackground(Color.decode(cPurple));
-        bottomPanel.setPreferredSize(new Dimension(800, 100));
+        bottomPanel.setPreferredSize(new Dimension(800, 150));
 
 
         // Add components
@@ -96,26 +138,43 @@ public class JFrameCatagorys extends JPanel {
     }
 
 
-    public void CategoryButton (JButton button, String Category) {
+    private JButton previouslySelectedButton = null;
+    //Here we edit the Category buttons and can add what the category is
+    public void CategoryButton(String[] listOfCategorys) {
+        Random rand = new Random();
 
-        //Set Color
-        button.setBackground(Color.decode(cYellow));
-        button.setForeground(Color.decode(cBlack));
-        //Size
-        button.setFont(new Font("Garamond", Font.BOLD, 50));
-        button.setPreferredSize(new Dimension(500, 100));
-        button.setMaximumSize(button.getPreferredSize());
-        //Text
-        button.setText(Category);
-        // Placement
-        button.setAlignmentX(Component.CENTER_ALIGNMENT);
+        // Create a list to store selected random categories
+        List<String> selectedCategories = new ArrayList<>();
+        while (selectedCategories.size() < 3) {
+            String randomCategory = listOfCategorys[rand.nextInt(listOfCategorys.length)];
+            if (!selectedCategories.contains(randomCategory)) {
+                selectedCategories.add(randomCategory); // Ensure uniqueness
+            }
+        }
+        for (String category : selectedCategories) {
+            JButton button = new JButton();
+            //Set Color
+            button.setBackground(Color.decode(cYellow));
+            button.setForeground(Color.decode(cBlack));
+            //Size
+            button.setFont(new Font("Garamond", Font.BOLD, 45));
+            button.setPreferredSize(new Dimension(400, 80));
+            button.setMaximumSize(button.getPreferredSize());
+            //Text
+            button.setText(category);
+            // Placement
+            button.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        //Action listener
-        button.addActionListener(new MyActionListener());
-        button.setActionCommand("StartQuestions");
-
-        centerPanel.add(button);
-
+            //Here we can save the information about what Category they want
+            button.addActionListener(e -> {
+                if (previouslySelectedButton != null) {
+                    previouslySelectedButton.setBackground(Color.decode(cYellow));
+                }
+                previouslySelectedButton = button;
+                button.setBackground(Color.decode(cWhite));
+                categorySelected = category;
+            });
+            centerPanel.add(button);
+        }
     }
-
 }
