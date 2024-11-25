@@ -1,5 +1,7 @@
 package JFrame;
 
+import Server.GameInformation;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
@@ -11,8 +13,6 @@ public class JFrameStart extends JPanel {
 
     public static String userPicture ;
     public static String userName;
-
-
 
 
     //Colors
@@ -46,6 +46,12 @@ public class JFrameStart extends JPanel {
     String [] faceOptions = {"☺","☻","☹","\uD83D\uDC7B","\uD83E\uDD20"};
     JPanel faceOptionPanel = new JPanel();
 
+    //How many rounds
+    int [] roundsWanted = {2,3,4,5,6};
+    int [] questionsPerRoundWanted = {2,3,4,5,6};
+    JPanel customizeGamePanel = new JPanel();
+    JLabel roundsWantedLabel = new JLabel("Rounds?");
+    JLabel questionsWantedLabel = new JLabel("Questions Per Round?");
 
     public void InitializeComponents(){
         //Main panel
@@ -67,9 +73,9 @@ public class JFrameStart extends JPanel {
         //Center Panel
         centerPanel.setLayout(new BorderLayout());
         centerPanel.setBackground(Color.decode(cPurple));
-        centerPanel.setPreferredSize(new Dimension(800, 600));
+        centerPanel.setPreferredSize(new Dimension(800, 300));
         centerCenterPanel.setLayout(new GridBagLayout());
-        centerCenterPanel.setBorder(new EmptyBorder(300, 0, 0, 0)); // Top padding of 100px
+        centerCenterPanel.setBorder(new EmptyBorder(100, 0, 0, 0)); // Top padding of 100px
         centerCenterPanel.setBackground(Color.decode(cPurple));
         centerTopPanel.setBackground(Color.decode(cPurple));
         centerTopPanel.setLayout(new BoxLayout(centerTopPanel, BoxLayout.Y_AXIS));
@@ -114,6 +120,87 @@ public class JFrameStart extends JPanel {
         userNameField.setPreferredSize(new Dimension(300, 100));
         userNameField.setBorder(new EmptyBorder(0, 0, 0, 0));
         userNameField.setMaximumSize(userNameField.getPreferredSize());
+
+
+        //Custom rounds and question Panel
+        customizeGamePanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        customizeGamePanel.setBackground(Color.decode(cPurple));
+        customizeGamePanel.setPreferredSize(new Dimension(800, 300));
+        roundsWantedLabel.setFont(new Font("Garamond", Font.BOLD, 20));
+        questionsWantedLabel.setFont(new Font("Garamond", Font.BOLD, 20));
+
+        customizeGamePanel.add(roundsWantedLabel);
+        //How many rounds button
+        ButtonGroup buttonGroupRoundWanted = new ButtonGroup();
+        for (int buttonI : roundsWanted) {
+            // Create a radio button using the value of buttonI directly
+            JRadioButton radioButton = new JRadioButton(String.valueOf(buttonI));
+            radioButton.setBackground(Color.decode(cPurple));
+            radioButton.setForeground(Color.decode(cBlack));
+            radioButton.setFont(new Font("Garamond", Font.BOLD, 50));
+            radioButton.setHorizontalAlignment(SwingConstants.CENTER);
+            radioButton.setBorder(BorderFactory.createLineBorder(Color.decode(cPurple), 0));
+            // Set the default selected radio button
+            if (buttonI == 2) {
+                radioButton.setSelected(true);
+            }
+            // Add the radio button to the button group and the panel
+            buttonGroupRoundWanted.add(radioButton);
+            radioButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    //Saves it as the user picture
+                    GameInformation.SetRoundsWanted(buttonI);
+                    System.out.println("Rounds wanted: " + buttonI);
+                }
+            });
+            customizeGamePanel.add(radioButton);
+        }
+
+
+        customizeGamePanel.add(questionsWantedLabel);
+
+
+        //How many Questions per round wanted
+
+        ButtonGroup buttonGroupQuestionsPerGame = new ButtonGroup();
+        for (int buttonI : questionsPerRoundWanted) {
+            // Create a radio button using the value of buttonI directly
+            JRadioButton radioButton = new JRadioButton(String.valueOf(buttonI));
+            radioButton.setBackground(Color.decode(cPurple));
+            radioButton.setForeground(Color.decode(cBlack));
+            radioButton.setFont(new Font("Garamond", Font.BOLD, 50));
+            radioButton.setHorizontalAlignment(SwingConstants.CENTER);
+            radioButton.setBorder(BorderFactory.createLineBorder(Color.decode(cPurple), 0));
+            // Set the default selected radio button
+            if (buttonI == 2) {
+                radioButton.setSelected(true);
+            }
+            // Add the radio button to the button group and the panel
+            buttonGroup.add(radioButton);
+            radioButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    //Saves it as the user picture
+                    GameInformation.SetQuestionsPerRoundWanted(buttonI);
+                }
+            });
+            customizeGamePanel.add(radioButton);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         //Start Buttons
@@ -162,7 +249,8 @@ public class JFrameStart extends JPanel {
         topPanel.add(titleLabel);
         centerTopPanel.add(faceOptionPanel);
         centerPanel.add(centerTopPanel, BorderLayout.NORTH);
-        centerPanel.add(centerCenterPanel, BorderLayout.CENTER);
+        centerPanel.add(customizeGamePanel,BorderLayout.CENTER);
+        centerPanel.add(centerCenterPanel, BorderLayout.SOUTH);
 
 
         centerTopPanel.add(userNameField);
