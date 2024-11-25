@@ -2,6 +2,7 @@ package JFrame;
 
 import javax.swing.*;
 import java.awt.*;
+import Server.Player;
 
 //This controls all the JFrames
 public class JFrameMain extends JFrame {
@@ -27,6 +28,7 @@ public class JFrameMain extends JFrame {
         masterPanel.add(new JFrameQuestions(),"JFrameQuestions");
 
        InitializeComponents();
+       startPlayer();
     }
 
     public void InitializeComponents(){
@@ -49,6 +51,9 @@ public class JFrameMain extends JFrame {
             masterPanel.revalidate();
             masterPanel.repaint();
         }
+    }
+    public void startPlayer (){
+       new Player();
     }
 
     public static void main(String[] args) {

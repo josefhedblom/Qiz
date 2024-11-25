@@ -16,6 +16,9 @@ public class Player implements Serializable {
         this.picture = picture;
     }
 
+    public Player() {
+
+    }
 
 
     public static void createPlayerLabels(JLabel userPicture, JLabel userName, String name, String picture) {

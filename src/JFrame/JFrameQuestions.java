@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class JFrameQuestions extends JPanel {
 
@@ -133,10 +135,22 @@ public class JFrameQuestions extends JPanel {
         mainPanel.revalidate();
     }
 
+    ArrayList<String> questionNames = new ArrayList<>();
+
+    public void QuestionNameRandomiser (){
+        questionNames.add("rätt svar!!");
+        questionNames.add("fel svar1!!");
+        questionNames.add("fel svar2!!");
+        questionNames.add("fel svar3!!");
+
+        Collections.shuffle(questionNames);
+    }
+
 
     public void AnswerButtons() {
+        QuestionNameRandomiser();
 
-        for (int i = 0; i <= 3; i++) {
+        for (String question : questionNames) {
             //Create Button
             JButton button = new JButton();
             //Set Color
@@ -147,7 +161,7 @@ public class JFrameQuestions extends JPanel {
             button.setPreferredSize(new Dimension(100, 100));
             button.setMaximumSize(button.getPreferredSize());
             //Text
-            button.setText("Answer");
+            button.setText(question);
             // Placement
             button.setAlignmentX(Component.CENTER_ALIGNMENT);
 
@@ -155,6 +169,11 @@ public class JFrameQuestions extends JPanel {
             //Action listener
             //Here we can save the answer
             button.addActionListener((ActionListener) e -> {
+                if (question.equals("rätt svar!!")) {
+                    JOptionPane.showMessageDialog(null, "yippi");
+                }else {
+                    JOptionPane.showMessageDialog(null, "whom whomp");
+                }
 
 
                 //If we want it to just reload the whole thing

@@ -42,10 +42,4 @@ public class Player {
         }
         return "127.0.0.1";
     }
-
-    public static class Main {
-        public static void main(String[] args) throws IOException {
-            new Player();
-        }
-    }
 }
