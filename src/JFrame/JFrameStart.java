@@ -48,7 +48,7 @@ public class JFrameStart extends JPanel {
 
     //How many rounds
     int [] roundsWanted = {2,3,4,5,6};
-    int [] questionsPerRoundWanted = {2,3,4,5,6};
+    int [] questionsPerRoundWanted = {1,2,3};
     JPanel customizeGamePanel = new JPanel();
     JLabel roundsWantedLabel = new JLabel("Rounds?");
     JLabel questionsWantedLabel = new JLabel("Questions Per Round?");
@@ -99,6 +99,7 @@ public class JFrameStart extends JPanel {
             // Set the default selected radio button
             if (buttonI.equals("☺")) {
                 radioButton.setSelected(true);
+                userPicture = buttonI;
             }
             // Add the radio button to the button group and the panel
             buttonGroup.add(radioButton);
@@ -143,6 +144,7 @@ public class JFrameStart extends JPanel {
             // Set the default selected radio button
             if (buttonI == 2) {
                 radioButton.setSelected(true);
+                GameInformation.SetRoundsWanted(buttonI);
             }
             // Add the radio button to the button group and the panel
             buttonGroupRoundWanted.add(radioButton);
@@ -175,6 +177,7 @@ public class JFrameStart extends JPanel {
             // Set the default selected radio button
             if (buttonI == 2) {
                 radioButton.setSelected(true);
+                GameInformation.SetQuestionsPerRoundWanted(buttonI);
             }
             // Add the radio button to the button group and the panel
             buttonGroup.add(radioButton);
