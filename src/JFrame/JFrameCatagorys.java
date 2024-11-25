@@ -1,10 +1,14 @@
 package JFrame;
+import Server.GameInformation;
+import jdk.jfr.Category;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Random;
 import java.util.List;
 
@@ -13,7 +17,7 @@ public class JFrameCatagorys extends JPanel {
 
     //Customize
     //Here we can add all category's
-    String [] CategoryList = {"Mat","Kändisar","Filmer","Länder","Natur","Spel","Historia"};
+    String [] CategoryList = {"Brädspel","Film","Musik","TV","TV Spel"};
     public static String categorySelected;
     public static String modeSelected;
 
@@ -92,14 +96,23 @@ public class JFrameCatagorys extends JPanel {
         easyModeButton.addActionListener(e -> {
             modeSelected = "easy";
             JFrameMain.switchPanel("JFrameQuestions");
+            GameInformation.SetDifficultyPicked("Lätt");
+            JFrameQuestions.getCategory(GameInformation.GetCategoryPicked(),GameInformation.GetDifficultyPicked(),JFrameQuestions.questionLabel);
+
 
         });
         mediumModeButton.addActionListener(e -> {
             JFrameMain.switchPanel("JFrameQuestions");
+            GameInformation.SetDifficultyPicked("Medium");
+            JFrameQuestions.getCategory(GameInformation.GetCategoryPicked(),GameInformation.GetDifficultyPicked(),JFrameQuestions.questionLabel);
+
 
         });
         hardModeButton.addActionListener(e -> {
             JFrameMain.switchPanel("JFrameQuestions");
+            GameInformation.SetDifficultyPicked("Svår");
+            JFrameQuestions.getCategory(GameInformation.GetCategoryPicked(),GameInformation.GetDifficultyPicked(),JFrameQuestions.questionLabel);
+
 
         });
 
@@ -172,7 +185,7 @@ public class JFrameCatagorys extends JPanel {
                 }
                 previouslySelectedButton = button;
                 button.setBackground(Color.decode(cWhite));
-                categorySelected = category;
+                GameInformation.SetCategoryPicked(category);
             });
             centerPanel.add(button);
         }

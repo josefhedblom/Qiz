@@ -1,4 +1,11 @@
 package JFrame;
+import Server.Database;
+import Server.GameInformation;
+import Server.GameQuestion;
+import Server.Question;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
@@ -7,17 +14,24 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.Scanner;
 
-public class JFrameQuestions extends JPanel {
+public class JFrameQuestions extends JPanel  {
 
     public static String userPicture ;
     public static String userName;
 
+    private static boolean timerStarted = false;
+    private Timer timer;
+    private static int timerCounter = 0;
+
+
     String cPurple = "#7540EE";
-    String cYellow ="#F4B512";
-    String cRed ="#F95179";
-    String cBlack ="#0D071A";
+    static String cYellow ="#F4B512";
+    static String cRed ="#F95179";
+    static String cBlack ="#0D071A";
     String cWhite ="#CECECE";
 
 
@@ -27,7 +41,6 @@ public class JFrameQuestions extends JPanel {
         setBackground(Color.decode(cPurple));
 
         InitializeComponents();
-
     }
     JPanel mainPanel = new JPanel();
     JPanel topPanel = new JPanel();
@@ -39,15 +52,15 @@ public class JFrameQuestions extends JPanel {
     JPanel userPanel = new JPanel();
     JPanel questionPanel = new JPanel();
     JPanel timerPanel = new JPanel();
-    JPanel answersPanel = new JPanel();
+    static JPanel answersPanel = new JPanel();
 
     JLabel userNameLabel = new JLabel("User Name");
     JLabel userPictureLabel = new JLabel();
 
-    JLabel questionLabel = new JLabel("Question");
+    public static JLabel questionLabel = new JLabel("Question");
 
     //Temp
-    JLabel timerLabel = new JLabel("Timer");
+    JLabel timerLabel = new JLabel("Timer:");
 
 
     public void InitializeComponents() {
@@ -99,6 +112,8 @@ public class JFrameQuestions extends JPanel {
         questionPanel.setPreferredSize(new Dimension(800, 400));
         questionPanel.setLayout(new GridBagLayout());
 
+
+
         //Question Text & Label
         questionLabel.setFont(new Font("Garamond",Font.BOLD,40));
         questionPanel.add(questionLabel);
@@ -106,8 +121,11 @@ public class JFrameQuestions extends JPanel {
 
         //Timer Panel
         timerPanel.setBackground(Color.decode(cPurple));
-        timerPanel.setPreferredSize(new Dimension(800, 50));
-        timerPanel.add(timerLabel);
+        timerPanel.setPreferredSize(new Dimension(400, 50));
+        timerPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+        timerPanel.setBorder(BorderFactory.createEmptyBorder(0, 300, 0, 300)); // Top, Left, Bottom, Right padding
+
+
 
         //Answer Panel
         answersPanel.setBackground(Color.decode(cPurple));
@@ -115,7 +133,7 @@ public class JFrameQuestions extends JPanel {
         answersPanel.setLayout(new GridLayout(2,2,10,10));
 
         //Adds the buttons
-        AnswerButtons();
+
 
 
         // Add components
@@ -135,9 +153,92 @@ public class JFrameQuestions extends JPanel {
         mainPanel.revalidate();
     }
 
+    public static void getCategory(String category, String difficulty, JLabel questionLabel){
+        Database db = new Database(category, difficulty);
+        JSONArray results = db.loadJSON().getJSONArray("results");
+
+        for (int i = 0; i < 1; i++) {
+            JSONObject result = results.getJSONObject(i);
+            Question question = new Question(result);
+
+            //Adds question from Json
+            questionLabel.setText(question.getQuestion());
+
+            JSONArray answerOptions = question.getOptions();
+
+            question.getOptions();
+
+           // System.out.println("AnswerOptions: " + answerOptions[1]);
+            System.out.println("Alternativ: " + question.getOptions());
+
+
+            for (int j = 0; j < 4; j++) {
+
+
+                String answer = answerOptions.toString();
+
+
+
+                //Create Button
+                JButton button = new JButton();
+                //Set Color
+                button.setBackground(Color.decode(cRed));
+                button.setForeground(Color.decode(cBlack));
+                //Size
+                button.setFont(new Font("Garamond", Font.BOLD, 30));
+                button.setPreferredSize(new Dimension(100, 100));
+                button.setMaximumSize(button.getPreferredSize());
+                //Text
+                System.out.println("answer: " + answer);
+                button.setText(String.valueOf(answer));
+                // Placement
+                button.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+
+
+                //Action listener
+                //Here we can save the answer
+                button.addActionListener((ActionListener) e -> {
+                    if (question.equals("rätt svar!!")) {
+                        JOptionPane.showMessageDialog(null, "yippi");
+                        JFrameScore.player1Score[GameInformation.RoundNumber()] = 1;
+                        GameInformation.NextRound();
+
+                    }else {
+                        JOptionPane.showMessageDialog(null, "whom whomp");
+                        JFrameScore.player2Score[GameInformation.RoundNumber()] = 0;
+                        GameInformation.NextRound();
+                    }
+
+                    button.addMouseListener(new MouseAdapter() {
+                        Color originalColor = button.getBackground();
+                        @Override
+                        public void mouseEntered(MouseEvent e) {
+                            button.setBackground(Color.decode(cYellow)); // Change color on hover
+                        }
+                        @Override
+                        public void mouseExited(MouseEvent e) {
+                            button.setBackground(originalColor); // Reset to original color
+                        }
+                    });
+                });
+                answersPanel.add(button);
+
+            }
+        }
+    }
+
+
+
+
+
     ArrayList<String> questionNames = new ArrayList<>();
 
     public void QuestionNameRandomiser (){
+
+
+
+
         questionNames.add("rätt svar!!");
         questionNames.add("fel svar1!!");
         questionNames.add("fel svar2!!");
@@ -147,56 +248,56 @@ public class JFrameQuestions extends JPanel {
     }
 
 
-    public void AnswerButtons() {
-        QuestionNameRandomiser();
-
-        for (String question : questionNames) {
-            //Create Button
-            JButton button = new JButton();
-            //Set Color
-            button.setBackground(Color.decode(cRed));
-            button.setForeground(Color.decode(cBlack));
-            //Size
-            button.setFont(new Font("Garamond", Font.BOLD, 30));
-            button.setPreferredSize(new Dimension(100, 100));
-            button.setMaximumSize(button.getPreferredSize());
-            //Text
-            button.setText(question);
-            // Placement
-            button.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 
-            //Action listener
-            //Here we can save the answer
-            button.addActionListener((ActionListener) e -> {
-                if (question.equals("rätt svar!!")) {
-                    JOptionPane.showMessageDialog(null, "yippi");
+
+    //15-second timer
+    public void StartTimer() {
+        if(timerStarted) return;
+
+        Timer timer = new Timer(2000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                timerCounter++;
+                JLabel block = new JLabel();
+                if (timerCounter == 9){
+                    block.setBackground(Color.decode(cBlack));
+                    //Add lost round
+
+
+
+                }
+                else if (timerCounter >= 7){
+                    block.setBackground(Color.decode(cRed));
                 }else {
-                    JOptionPane.showMessageDialog(null, "whom whomp");
+                    block.setBackground(Color.decode(cYellow));
                 }
+                block.setVisible(true);
+                block.setOpaque(true);
+                block.setPreferredSize(new Dimension(50, 20));
+                block.setVerticalAlignment(SwingConstants.CENTER);
 
+                timerPanel.add(block);
+                timerPanel.revalidate();
+                timerPanel.repaint();
+            }
 
-                //If we want it to just reload the whole thing
-                JFrameMain.switchPanel("JFrameQuestions");
+        });
+        timer.start();
+        timerStarted = true;
+    }
+    public void StopTimer() {
+        if (timer != null && timer.isRunning()) {
+            timer.stop();
+        }
+    }
 
-                //Something to add if we got the question wrong or right
-                //Maybe just a list of 0 1 2 for "Not Done" "Right" "Wrong"
-
-            });
-
-            //Changes color if button is hovered over
-            button.addMouseListener(new MouseAdapter() {
-                Color originalColor = button.getBackground();
-                @Override
-                public void mouseEntered(MouseEvent e) {
-                    button.setBackground(Color.decode(cYellow)); // Change color on hover
-                }
-                @Override
-                public void mouseExited(MouseEvent e) {
-                    button.setBackground(originalColor); // Reset to original color
-                }
-            });
-            answersPanel.add(button);
+    public void setVisible(boolean visible) {
+        super.setVisible(visible);
+        if (visible) {
+            StartTimer();  // Start the timer when the panel becomes visible
+        } else {
+            StopTimer();  // Stop the timer when the panel is hidden
         }
     }
 }

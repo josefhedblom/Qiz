@@ -14,6 +14,9 @@ public class JFrameScore extends JPanel {
     public static String user1Picture = "☺";
     public static String user2Picture = "☺";
 
+    public static int[] player1Score = {0,1,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+    public static int[] player2Score = {0,1,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
 
 
     String cPurple = "#7540EE";
@@ -82,8 +85,8 @@ public class JFrameScore extends JPanel {
         centerCenterPanel.setBorder(new EmptyBorder(20, 0, 20, 0)); // Add padding around the panels
 
         // Score Panels
-        ScorePanel(p1RoundListPanel);  // Player 1 Score Panel
-        ScorePanel(p2RoundListPanel);  // Player 2 Score Panel
+        ScorePanel(p1RoundListPanel,player1Score);  // Player 1 Score Panel
+        ScorePanel(p2RoundListPanel,player2Score);  // Player 2 Score Panel
         RoundWonPanel(roundWonPanel);
 
 
@@ -159,7 +162,7 @@ public class JFrameScore extends JPanel {
 
     //Generates the dots for each player
     //Here we add some sort of List to save who won / Lost
-    public void ScorePanel(JPanel panel) {
+    public void ScorePanel(JPanel panel, int[] score) {
 
         panel.setBackground(Color.decode(cPurple));
         panel.setVisible(true);
@@ -168,19 +171,18 @@ public class JFrameScore extends JPanel {
         panel.setLayout(new GridLayout(6, 3, 1, 1)); // 2px horizontal gap, 5px vertical gap
 
         for (int i = 0; i < 18; i++) {
+
             JLabel questionDot = new JLabel("⚫");
             questionDot.setFont(new Font("Garamond", Font.BOLD, 80)); // Smaller dots for narrower width
 
-            //This determines the color, We can change them to list or another way to save the answers
-            if (i == 2){
-                questionDot.setForeground(Color.decode(cYellow));
-
-            } else if (i == 3) {
-                questionDot.setForeground(Color.decode(cRed));
-
-            }else {
+            if (score[i] == 0){
                 questionDot.setForeground(Color.decode(cBlack));
+            } else if (score[i] == 1) {
+                questionDot.setForeground(Color.decode(cYellow));
+            }else if (score[i] == 2) {
+                questionDot.setForeground(Color.decode(cRed));
             }
+
 
             questionDot.setHorizontalAlignment(SwingConstants.CENTER);
 
