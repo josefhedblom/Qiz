@@ -197,7 +197,7 @@ public class JFrameQuestions extends JPanel  {
                 //Action listener
                 //Here we can save the answer
                 button.addActionListener((ActionListener) e -> {
-                    if (question.equals("rätt svar!!")) {
+                    if (question.equals(question.getCorrectAnswer())) {
                         JOptionPane.showMessageDialog(null, "yippi");
                         JFrameScore.player1Score[GameInformation.RoundNumber()] = 1;
                         GameInformation.NextRound();

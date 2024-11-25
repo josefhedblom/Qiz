@@ -15,6 +15,7 @@ public class Server extends Thread {
                 PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
                 BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         ) {
+
             String inputLine;
             out.println(p.processInput(null));
 
