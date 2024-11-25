@@ -165,20 +165,18 @@ public class JFrameQuestions extends JPanel  {
             questionLabel.setText(question.getQuestion());
 
             JSONArray answerOptions = question.getOptions();
+            System.out.println("Before " + answerOptions);
+            Collections.shuffle(answerOptions.toList());
+            System.out.println("After " + answerOptions);
 
             question.getOptions();
 
-           // System.out.println("AnswerOptions: " + answerOptions[1]);
+            // System.out.println("AnswerOptions: " + answerOptions[1]);
             System.out.println("Alternativ: " + question.getOptions());
 
 
-            for (int j = 0; j < 4; j++) {
-
-
-                String answer = answerOptions.toString();
-
-
-
+            for (int j = 0; j < answerOptions.length(); j++) {
+                String answer = answerOptions.getString(j);
                 //Create Button
                 JButton button = new JButton();
                 //Set Color
@@ -226,6 +224,7 @@ public class JFrameQuestions extends JPanel  {
 
             }
         }
+
     }
 
 
