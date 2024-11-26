@@ -50,7 +50,7 @@ public class JFrameStart extends JPanel {
     int [] roundsWanted = {2,3,4,5,6};
     int [] questionsPerRoundWanted = {1,2,3};
     JPanel customizeGamePanel = new JPanel();
-    JLabel roundsWantedLabel = new JLabel("Rounds?");
+    JLabel roundsWantedLabel = new JLabel("  Rounds per Game?");
     JLabel questionsWantedLabel = new JLabel("Questions Per Round?");
 
     public void InitializeComponents(){
@@ -124,13 +124,26 @@ public class JFrameStart extends JPanel {
 
 
         //Custom rounds and question Panel
-        customizeGamePanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        JPanel roundsPanel = new JPanel();
+        roundsPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        roundsPanel.setBackground(Color.decode(cPurple));
+        roundsPanel.setPreferredSize(new Dimension(800, 120));
+        JPanel questionsPanel = new JPanel();
+        questionsPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        questionsPanel.setBackground(Color.decode(cPurple));
+        questionsPanel.setPreferredSize(new Dimension(800, 130));
+        customizeGamePanel.setLayout(new FlowLayout(FlowLayout.LEFT,100,0));
         customizeGamePanel.setBackground(Color.decode(cPurple));
-        customizeGamePanel.setPreferredSize(new Dimension(800, 300));
+        customizeGamePanel.setPreferredSize(new Dimension(800, 150));
         roundsWantedLabel.setFont(new Font("Garamond", Font.BOLD, 20));
         questionsWantedLabel.setFont(new Font("Garamond", Font.BOLD, 20));
 
-        customizeGamePanel.add(roundsWantedLabel);
+        roundsWantedLabel.setFont(new Font("Garamond", Font.BOLD, 20));
+        questionsWantedLabel.setFont(new Font("Garamond", Font.BOLD, 20));
+        roundsWantedLabel.setForeground(Color.decode(cBlack));
+        questionsWantedLabel.setForeground(Color.decode(cBlack));
+
+        roundsPanel.add(roundsWantedLabel);
         //How many rounds button
         ButtonGroup buttonGroupRoundWanted = new ButtonGroup();
         for (int buttonI : roundsWanted) {
@@ -142,7 +155,7 @@ public class JFrameStart extends JPanel {
             radioButton.setHorizontalAlignment(SwingConstants.CENTER);
             radioButton.setBorder(BorderFactory.createLineBorder(Color.decode(cPurple), 0));
             // Set the default selected radio button
-            if (buttonI == 2) {
+            if (buttonI == 6) {
                 radioButton.setSelected(true);
                 GameInformation.SetRoundsWanted(buttonI);
             }
@@ -156,11 +169,11 @@ public class JFrameStart extends JPanel {
                     System.out.println("Rounds wanted: " + buttonI);
                 }
             });
-            customizeGamePanel.add(radioButton);
+            roundsPanel.add(radioButton);
         }
 
 
-        customizeGamePanel.add(questionsWantedLabel);
+        questionsPanel.add(questionsWantedLabel);
 
 
         //How many Questions per round wanted
@@ -175,12 +188,12 @@ public class JFrameStart extends JPanel {
             radioButton.setHorizontalAlignment(SwingConstants.CENTER);
             radioButton.setBorder(BorderFactory.createLineBorder(Color.decode(cPurple), 0));
             // Set the default selected radio button
-            if (buttonI == 2) {
+            if (buttonI == 3) {
                 radioButton.setSelected(true);
                 GameInformation.SetQuestionsPerRoundWanted(buttonI);
             }
             // Add the radio button to the button group and the panel
-            buttonGroup.add(radioButton);
+            buttonGroupQuestionsPerGame.add(radioButton);
             radioButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -188,18 +201,8 @@ public class JFrameStart extends JPanel {
                     GameInformation.SetQuestionsPerRoundWanted(buttonI);
                 }
             });
-            customizeGamePanel.add(radioButton);
+            questionsPanel.add(radioButton);
         }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -252,6 +255,8 @@ public class JFrameStart extends JPanel {
         topPanel.add(titleLabel);
         centerTopPanel.add(faceOptionPanel);
         centerPanel.add(centerTopPanel, BorderLayout.NORTH);
+        customizeGamePanel.add(roundsPanel);
+        customizeGamePanel.add(questionsPanel);
         centerPanel.add(customizeGamePanel,BorderLayout.CENTER);
         centerPanel.add(centerCenterPanel, BorderLayout.SOUTH);
 
