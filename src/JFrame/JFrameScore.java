@@ -16,10 +16,6 @@ public class JFrameScore extends JPanel {
     public static String user1Picture = "☺";
     public static String user2Picture = "☺";
 
-    public static int[] player1Score = {0,1,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-    public static int[] player2Score = {0,1,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-
-
 
     static String cPurple = "#7540EE";
     static String cYellow ="#F4B512";

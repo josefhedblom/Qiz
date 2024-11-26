@@ -8,6 +8,9 @@ public class GameInformation {
     static String difficultyPicked;
     static int roundsWanted;
     static int questionsPerRoundWanted;
+    public static int[] player1Score = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+    public static int[] player2Score = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+    static int questionsDone = 0;
 
     public static int RoundNumber(){
         return RoundNumber;
@@ -38,5 +41,23 @@ public class GameInformation {
     }
     public static void SetQuestionsPerRoundWanted(int QuestionsPerRoundWanted){
         questionsPerRoundWanted = QuestionsPerRoundWanted;
+    }
+    public static void EditPlayer1Score(int index, int score){
+        player1Score[index] = score;
+    }
+    public static void EditPlayer2Score(int index, int score){
+        player1Score[index] = score;
+    }
+    public static int GetPlayer1Score(int index){
+        return player1Score[index];
+    }
+    public static int GetPlayer2Score(int index){
+        return player2Score[index];
+    }
+    public static int GetQuestionsDone(){
+        return questionsDone;
+    }
+    public static void AddQuestionsDone(){
+        questionsDone++;
     }
 }

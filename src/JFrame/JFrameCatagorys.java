@@ -97,21 +97,24 @@ public class JFrameCatagorys extends JPanel {
             modeSelected = "easy";
             JFrameMain.switchPanel("JFrameQuestions");
             GameInformation.SetDifficultyPicked("Lätt");
-            JFrameQuestions.getCategory(GameInformation.GetCategoryPicked(),GameInformation.GetDifficultyPicked(),JFrameQuestions.questionLabel);
+            JFrameQuestions.getCategory(GameInformation.GetCategoryPicked(),GameInformation.GetDifficultyPicked(),JFrameQuestions.questionLabel,1);
+            JFrameQuestions.startTimer();
 
 
         });
         mediumModeButton.addActionListener(e -> {
             JFrameMain.switchPanel("JFrameQuestions");
             GameInformation.SetDifficultyPicked("Medium");
-            JFrameQuestions.getCategory(GameInformation.GetCategoryPicked(),GameInformation.GetDifficultyPicked(),JFrameQuestions.questionLabel);
+            JFrameQuestions.getCategory(GameInformation.GetCategoryPicked(),GameInformation.GetDifficultyPicked(),JFrameQuestions.questionLabel,1);
+            JFrameQuestions.startTimer();
 
 
         });
         hardModeButton.addActionListener(e -> {
             JFrameMain.switchPanel("JFrameQuestions");
             GameInformation.SetDifficultyPicked("Svår");
-            JFrameQuestions.getCategory(GameInformation.GetCategoryPicked(),GameInformation.GetDifficultyPicked(),JFrameQuestions.questionLabel);
+            JFrameQuestions.getCategory(GameInformation.GetCategoryPicked(),GameInformation.GetDifficultyPicked(),JFrameQuestions.questionLabel,1);
+            JFrameQuestions.startTimer();
 
 
         });

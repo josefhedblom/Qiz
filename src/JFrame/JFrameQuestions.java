@@ -1,32 +1,32 @@
 package JFrame;
 import Server.Database;
 import Server.GameInformation;
-import Server.GameQuestion;
 import Server.Question;
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import javax.swing.*;
+import javax.swing.Timer;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Scanner;
+import java.util.*;
+
+import static JFrame.JFrameScore.p1RoundListPanel;
+import static JFrame.JFrameScore.p2RoundListPanel;
 
 public class JFrameQuestions extends JPanel  {
 
     public static String userPicture ;
     public static String userName;
 
-    private static boolean timerStarted = false;
-    private Timer timer;
+    private static Timer timer;
     private static int timerCounter = 0;
 
+    //STOOOOOOOOPP
+    //STOOOOOOOOP
 
     String cPurple = "#7540EE";
     static String cYellow ="#F4B512";
@@ -51,7 +51,7 @@ public class JFrameQuestions extends JPanel  {
 
     JPanel userPanel = new JPanel();
     JPanel questionPanel = new JPanel();
-    JPanel timerPanel = new JPanel();
+    static JPanel timerPanel = new JPanel();
     static JPanel answersPanel = new JPanel();
 
     JLabel userNameLabel = new JLabel("User Name");
@@ -59,8 +59,8 @@ public class JFrameQuestions extends JPanel  {
 
     public static JLabel questionLabel = new JLabel("Question");
 
-    //Temp
-    JLabel timerLabel = new JLabel("Timer:");
+    public static int questionsAsked = 1;
+
 
 
     public void InitializeComponents() {
@@ -104,15 +104,13 @@ public class JFrameQuestions extends JPanel  {
 
         //Here to update username and picture
         Player.createPlayerLabels(userNameLabel,userPictureLabel,userName,userPicture);
-
         userPanel.add(userPictureLabel);
         userPanel.add(userNameLabel);
+
         //Question Panel
         questionPanel.setBackground(Color.decode(cWhite));
         questionPanel.setPreferredSize(new Dimension(800, 400));
         questionPanel.setLayout(new GridBagLayout());
-
-
 
         //Question Text & Label
         questionLabel.setFont(new Font("Garamond",Font.BOLD,40));
@@ -125,15 +123,10 @@ public class JFrameQuestions extends JPanel  {
         timerPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
         timerPanel.setBorder(BorderFactory.createEmptyBorder(0, 300, 0, 300)); // Top, Left, Bottom, Right padding
 
-
-
         //Answer Panel
         answersPanel.setBackground(Color.decode(cPurple));
         answersPanel.setPreferredSize(new Dimension(600, 400));
         answersPanel.setLayout(new GridLayout(2,2,10,10));
-
-        //Adds the buttons
-
 
 
         // Add components
@@ -153,32 +146,34 @@ public class JFrameQuestions extends JPanel  {
         mainPanel.revalidate();
     }
 
-    public static void getCategory(String category, String difficulty, JLabel questionLabel){
+    public static void getCategory(String category, String difficulty, JLabel questionLabel,int questionsAsked){
         Database db = new Database(category, difficulty);
         JSONArray results = db.loadJSON().getJSONArray("results");
 
+        //Clears The Panel
+        answersPanel.removeAll();
+        answersPanel.repaint();
+        answersPanel.revalidate();
+
+
+
         for (int i = 0; i < 1; i++) {
-            JSONObject result = results.getJSONObject(i);
+            Random rand = new Random();
+            JSONObject result = results.getJSONObject(rand.nextInt(10));
             Question question = new Question(result);
 
             //Adds question from Json
             questionLabel.setText(question.getQuestion());
-
             JSONArray answerOptions = question.getOptions();
-            System.out.println("Before " + answerOptions);
             Collections.shuffle(answerOptions.toList());
-            System.out.println("After " + answerOptions);
-
-            question.getOptions();
-
-            // System.out.println("AnswerOptions: " + answerOptions[1]);
-            System.out.println("Alternativ: " + question.getOptions());
 
 
             for (int j = 0; j < answerOptions.length(); j++) {
+
+                JButton button = new JButton();
+
                 String answer = answerOptions.getString(j);
                 //Create Button
-                JButton button = new JButton();
                 //Set Color
                 button.setBackground(Color.decode(cRed));
                 button.setForeground(Color.decode(cBlack));
@@ -197,15 +192,37 @@ public class JFrameQuestions extends JPanel  {
                 //Action listener
                 //Here we can save the answer
                 button.addActionListener((ActionListener) e -> {
-                    if (question.equals("rätt svar!!")) {
-                        JOptionPane.showMessageDialog(null, "yippi");
-                        JFrameScore.player1Score[GameInformation.RoundNumber()] = 1;
+                    if (button.getText().equals(question.getCorrectAnswer())) {
+
+                        //Here we input which player it is
+                        //This lets us edit the scores and uses the Questions done in Game information
+                        if (true){
+                            GameInformation.EditPlayer1Score(GameInformation.GetQuestionsDone(),1);
+                        } else if (true) {
+                            GameInformation.EditPlayer2Score(GameInformation.GetQuestionsDone(),1);
+                        }
+
+
+                        //Next round information
                         GameInformation.NextRound();
+                        GameInformation.AddQuestionsDone();
+                        NextQuestion();
+
 
                     }else {
-                        JOptionPane.showMessageDialog(null, "whom whomp");
-                        JFrameScore.player2Score[GameInformation.RoundNumber()] = 0;
+                        //Here we input which player it is
+                        //This lets us edit the scores and uses the Questions done in Game information
+                        if (true){
+                            GameInformation.EditPlayer1Score(GameInformation.GetQuestionsDone(),2);
+                        } else if (true) {
+                            GameInformation.EditPlayer2Score(GameInformation.GetQuestionsDone(),2);
+                        }
+
+                        //Next round information
                         GameInformation.NextRound();
+                        GameInformation.AddQuestionsDone();
+                        NextQuestion();
+
                     }
 
                     button.addMouseListener(new MouseAdapter() {
@@ -220,83 +237,85 @@ public class JFrameQuestions extends JPanel  {
                         }
                     });
                 });
-                answersPanel.add(button);
+                //Adds button in a random spot
+                try {
+                    answersPanel.add(button, rand.nextInt(2), rand.nextInt(2));
+                }catch (IllegalArgumentException e){
+                    answersPanel.add(button);
+                }
 
             }
+            answersPanel.repaint();
+            answersPanel.revalidate();
         }
-
     }
 
+    public static void NextQuestion(){
+        resetTimer();
+        startTimer();
+        if (questionsAsked == 3){
 
+            if (GameInformation.GetRoundsWanted() == GameInformation.RoundNumber()){
 
-
-
-    ArrayList<String> questionNames = new ArrayList<>();
-
-    public void QuestionNameRandomiser (){
-
-
-
-
-        questionNames.add("rätt svar!!");
-        questionNames.add("fel svar1!!");
-        questionNames.add("fel svar2!!");
-        questionNames.add("fel svar3!!");
-
-        Collections.shuffle(questionNames);
-    }
-
-
-
-
-
-    //15-second timer
-    public void StartTimer() {
-        if(timerStarted) return;
-
-        Timer timer = new Timer(2000, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                timerCounter++;
-                JLabel block = new JLabel();
-                if (timerCounter == 9){
-                    block.setBackground(Color.decode(cBlack));
-                    //Add lost round
-
-
-
-                }
-                else if (timerCounter >= 7){
-                    block.setBackground(Color.decode(cRed));
-                }else {
-                    block.setBackground(Color.decode(cYellow));
-                }
-                block.setVisible(true);
-                block.setOpaque(true);
-                block.setPreferredSize(new Dimension(50, 20));
-                block.setVerticalAlignment(SwingConstants.CENTER);
-
-                timerPanel.add(block);
-                timerPanel.revalidate();
-                timerPanel.repaint();
+                System.out.println("You Won");
             }
 
-        });
-        timer.start();
-        timerStarted = true;
+            JFrameScore.p1RoundListPanel.removeAll();
+            JFrameScore.p2RoundListPanel.removeAll();
+            JFrameScore.ScorePanel(p1RoundListPanel,GameInformation.player1Score, GameInformation.GetRoundsWanted(),GameInformation.GetQuestionsPerRoundWanted());  // Player 1 Score Panel
+            JFrameScore.ScorePanel(p2RoundListPanel,GameInformation.player2Score,GameInformation.GetRoundsWanted(),GameInformation.GetQuestionsPerRoundWanted());
+            JFrameMain.switchPanel("JFrameScore");
+            questionsAsked = 0;
+        }
+        questionsAsked++;
+
+        getCategory(GameInformation.GetCategoryPicked(),GameInformation.GetDifficultyPicked(),JFrameQuestions.questionLabel,questionsAsked);
+
     }
-    public void StopTimer() {
+
+    //Timer V2
+    public static void resetTimer() {
         if (timer != null && timer.isRunning()) {
             timer.stop();
         }
+        timerCounter = 0;
+        timerPanel.removeAll();
+        timerPanel.repaint();
+        timerPanel.revalidate();
     }
 
-    public void setVisible(boolean visible) {
-        super.setVisible(visible);
-        if (visible) {
-            StartTimer();  // Start the timer when the panel becomes visible
-        } else {
-            StopTimer();  // Stop the timer when the panel is hidden
-        }
+    // Timer Start Method
+    public static void startTimer() {
+        resetTimer();
+
+        timer = new Timer(500, e -> {
+            timerCounter++;
+
+            JLabel block = new JLabel();
+            block.setOpaque(true);
+            block.setPreferredSize(new Dimension(50, 20));
+            block.setVerticalAlignment(SwingConstants.CENTER);
+
+            // Change block color based on time left
+            if (timerCounter >= 7) {
+                block.setBackground(Color.decode(cRed));
+            } else {
+                block.setBackground(Color.decode(cYellow));
+            }
+
+            timerPanel.add(block);
+            timerPanel.revalidate();
+            timerPanel.repaint();
+
+            // Timer ends after 9 ticks
+            if (timerCounter == 9) {
+                block.setBackground(Color.decode(cBlack));
+                JOptionPane.showMessageDialog(null, "Time's up!");
+                timer.stop();
+                // Handle time-out logic here
+            }
+        });
+
+        timer.start();
     }
 }

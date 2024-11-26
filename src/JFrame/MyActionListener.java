@@ -14,8 +14,8 @@ public class MyActionListener extends JFrame implements ActionListener {
         if ("startNewGame".equals(actionCommand)) {
             System.out.println("Starting new game");
 
-            JFrameScore.ScorePanel(p1RoundListPanel,player1Score, GameInformation.GetRoundsWanted(),GameInformation.GetQuestionsPerRoundWanted());  // Player 1 Score Panel
-            JFrameScore.ScorePanel(p2RoundListPanel,player2Score,GameInformation.GetRoundsWanted(),GameInformation.GetQuestionsPerRoundWanted());   // Player 2 Score Panel
+            JFrameScore.ScorePanel(p1RoundListPanel,GameInformation.player1Score, GameInformation.GetRoundsWanted(),GameInformation.GetQuestionsPerRoundWanted());  // Player 1 Score Panel
+            JFrameScore.ScorePanel(p2RoundListPanel,GameInformation.player2Score,GameInformation.GetRoundsWanted(),GameInformation.GetQuestionsPerRoundWanted());   // Player 2 Score Panel
             JFrameMain.switchPanel("JFrameScore");
 
 
