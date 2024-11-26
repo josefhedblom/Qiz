@@ -7,16 +7,14 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import javax.swing.*;
+import javax.swing.Timer;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Scanner;
+import java.util.*;
 
 public class JFrameQuestions extends JPanel  {
 
@@ -156,28 +154,15 @@ public class JFrameQuestions extends JPanel  {
     public static void getCategory(String category, String difficulty, JLabel questionLabel){
         Database db = new Database(category, difficulty);
         JSONArray results = db.loadJSON().getJSONArray("results");
-
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 1 ; i++) {
             JSONObject result = results.getJSONObject(i);
             Question question = new Question(result);
 
             //Adds question from Json
             questionLabel.setText(question.getQuestion());
 
-            JSONArray answerOptions = question.getOptions();
-            System.out.println("Before " + answerOptions);
-            Collections.shuffle(answerOptions.toList());
-            System.out.println("After " + answerOptions);
 
-            question.getOptions();
-
-            // System.out.println("AnswerOptions: " + answerOptions[1]);
-            System.out.println("Alternativ: " + question.getOptions());
-
-
-            for (int j = 0; j < answerOptions.length(); j++) {
-                String answer = answerOptions.getString(j);
-                //Create Button
+            for(Object option : question.getOptions()){
                 JButton button = new JButton();
                 //Set Color
                 button.setBackground(Color.decode(cRed));
@@ -187,22 +172,18 @@ public class JFrameQuestions extends JPanel  {
                 button.setPreferredSize(new Dimension(100, 100));
                 button.setMaximumSize(button.getPreferredSize());
                 //Text
-                System.out.println("answer: " + answer);
-                button.setText(String.valueOf(answer));
+                button.setText(option.toString());
                 // Placement
                 button.setAlignmentX(Component.CENTER_ALIGNMENT);
+                answersPanel.add(button);
 
-
-
-                //Action listener
-                //Here we can save the answer
                 button.addActionListener((ActionListener) e -> {
-                    if (question.equals("rätt svar!!")) {
+                    if (button.getText().equals(question.getCorrectAnswer())) {
                         JOptionPane.showMessageDialog(null, "yippi");
                         JFrameScore.player1Score[GameInformation.RoundNumber()] = 1;
                         GameInformation.NextRound();
 
-                    }else {
+                    } else {
                         JOptionPane.showMessageDialog(null, "whom whomp");
                         JFrameScore.player2Score[GameInformation.RoundNumber()] = 0;
                         GameInformation.NextRound();
@@ -210,18 +191,18 @@ public class JFrameQuestions extends JPanel  {
 
                     button.addMouseListener(new MouseAdapter() {
                         Color originalColor = button.getBackground();
+
                         @Override
                         public void mouseEntered(MouseEvent e) {
                             button.setBackground(Color.decode(cYellow)); // Change color on hover
                         }
+
                         @Override
                         public void mouseExited(MouseEvent e) {
                             button.setBackground(originalColor); // Reset to original color
                         }
                     });
                 });
-                answersPanel.add(button);
-
             }
         }
 

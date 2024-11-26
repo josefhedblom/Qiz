@@ -1,12 +1,13 @@
 package Server;
 
+import java.net.Socket;
+
 public class User {
     private String username;
     private String avatar;
     private String category;
     private String difficulty;
     private int score = 0;
-
 
     public String getUsername() {
         return username;

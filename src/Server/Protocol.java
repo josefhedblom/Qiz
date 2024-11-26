@@ -11,6 +11,7 @@ public class Protocol {
     private static final int ASK_QUESTIONS = 4;
     private static final int CHECK_QUESTION = 5;
     private static final int GAME_OVER = 6;
+    private static final int GAME_DONE = 7;
 
     private final User user = new User();
 
@@ -61,6 +62,8 @@ public class Protocol {
                 return handelCheckQuestions(input);
             case GAME_OVER:
                 handelGameOver();
+            case GAME_DONE:
+                return gameDone();
             default:
                 return Messages.ERROR.format();
         }
@@ -101,9 +104,13 @@ public class Protocol {
             state = CHECK_QUESTION;
             return Messages.QUESTION.format(currentQuestionIndex, question.getQuestion(), question.getOptions());
         } else {
-            state = GAME_OVER;
+            state = GAME_DONE;
             return Messages.GAME_DONE.format(user.getUsername(), this.score);
         }
+    }
+
+    private String gameDone(){
+        return "Hej hej";
     }
 
     private String handelCheckQuestions(String input) {
