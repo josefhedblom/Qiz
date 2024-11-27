@@ -16,16 +16,6 @@ public class Category {
         CATEGORY_PATHS.put("TV Spel", "videogame");
     }
 
-    private static void addCategories(String... categories) {
-        for (String category : categories) {
-            String subPath = category.toLowerCase().replace(" ", "");
-            CATEGORY_PATHS.put(category, BASE_PATH + subPath);
-        }
-    }
-
-    // public static getCategories hämta alla kategorier
-
-
     public static String getCategory(String category) {
         String path = BASE_PATH + CATEGORY_PATHS.get(category.trim());
         if (path.isEmpty()) {

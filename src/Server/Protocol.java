@@ -1,11 +1,14 @@
 package Server;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Protocol {
-    private static String globalCategory = null; // Spara kategorin
-    private static String globalDifficulty = null; // Spara svårighetsgraden
-
     private static final int GET_USERNAME = 0;
     private static final int GET_CATEGORY = 1;
     private static final int GET_DIFFICULTY = 2;
@@ -14,15 +17,13 @@ public class Protocol {
     private static final int CHECK_QUESTION = 5;
     private static final int GAME_DONE = 7;
 
-    private final User user = new User();
+    private User user = new User();
 
     private int state = GET_USERNAME;
     private int currentQuestionIndex = 0;
     private int score = 0;
     private JSONArray questionsList = new JSONArray();
     private Question question;
-
-    private boolean usernameSaved = false; // Ny variabel för att kontrollera om användarnamnet är sparat
 
     public enum Messages {
         ENTER_USERNAME("Ange ett användarnamn: "),
@@ -75,43 +76,40 @@ public class Protocol {
     }
 
     private String handleGetUsername(String input) {
-        if (usernameSaved) { // Hoppa över användarnamnsinmatning om det redan är sparat
-            state = GET_CATEGORY;
-            return Messages.GREET_USER.format(user.getUsername());
-        }
-
         if (isValid(input)) return Messages.ENTER_USERNAME.format();
         user.setUsername(input);
-        usernameSaved = true; // Markera att användarnamnet är sparat
         state = GET_CATEGORY;
         return Messages.GREET_USER.format(user.getUsername());
     }
 
     private String handleGetCategory(String input) {
-        // Om det är spelare 1, uppdatera den globala kategorin
-        if (globalCategory == null || this.user.isPlayerOne()) {
-            if (isValid(input)) return Messages.ENTER_CATEGORY.format();
-            globalCategory = input.trim(); // Uppdatera kategorin
+        // Om svårighetsgraden redan är satt (för Spelare 2), hoppa över inmatning
+        if (user.getDifficulty() != null && !user.getDifficulty().isEmpty()) {
+            state = CONNECT_DATABASE;  // Gå vidare till att ansluta till databasen
+            return Messages.CHOSEN_DIFFICULTY.format(user.getDifficulty()); // Visa vald svårighetsgrad
         }
-        user.setCategory(globalCategory); // Tilldela den aktuella spelaren kategorin
-        state = GET_DIFFICULTY;
-        return Messages.CHOSEN_CATEGORY.format(user.getCategory());
+
+        // Om svårighetsgraden inte är vald, be användaren att ange den
+        if (isValid(input)) return Messages.ENTER_DIFFICULTY.format();
+
+        // Sätt svårighetsgraden om det är ett giltigt val
+        user.setDifficulty(input);
+        state = CONNECT_DATABASE;  // Gå vidare till att ansluta till databasen
+        return Messages.CHOSEN_DIFFICULTY.format(user.getDifficulty()); // Bekräfta vald svårighetsgrad
     }
-
-
 
     private String handleGetDifficulty(String input) {
-        // Om det är spelare 1, uppdatera den globala svårighetsgraden
-        if (globalDifficulty == null || this.user.isPlayerOne()) {
+        // För Spelare 2, hoppa över svårighetsgrad-valet om det finns sparad data
+        if (!user.getDifficulty().isEmpty()) {
+            state = CONNECT_DATABASE;
+            return Messages.CHOSEN_DIFFICULTY.format(user.getDifficulty());
+        }else {
             if (isValid(input)) return Messages.ENTER_DIFFICULTY.format();
-            globalDifficulty = input.trim(); // Uppdatera svårighetsgraden
+            user.setDifficulty(input);
+            state = CONNECT_DATABASE;
+            return Messages.CHOSEN_DIFFICULTY.format(user.getDifficulty());
         }
-        user.setDifficulty(globalDifficulty); // Tilldela den aktuella spelaren svårighetsgraden
-        state = CONNECT_DATABASE;
-        return Messages.CHOSEN_DIFFICULTY.format(user.getDifficulty());
     }
-
-
 
     private void handleConnectDatabase() {
         Database db = new Database(user.getCategory(), user.getDifficulty());
@@ -120,27 +118,27 @@ public class Protocol {
     }
 
     private String handleAskQuestions(String input) {
-        if (currentQuestionIndex < questionsList.length()) {
-            this.question = new Question(this.questionsList.getJSONObject(currentQuestionIndex));
-            currentQuestionIndex++;
-            state = CHECK_QUESTION;
-            return Messages.QUESTION.format(currentQuestionIndex, question.getQuestion(), question.getOptions());
-        } else {
-            state = GAME_DONE;
-            return Messages.GAME_DONE.format(user.getUsername(), this.score);
+        if (user.getCategory() != null && !user.getCategory().isEmpty()) {
+            state = GET_DIFFICULTY;
+            return Messages.CHOSEN_CATEGORY.format(user.getCategory());
         }
+
+        if (isValid(input)) return Messages.ENTER_CATEGORY.format();
+        user.setCategory(input);
+        state = GET_DIFFICULTY;
+        return Messages.CHOSEN_CATEGORY.format(user.getCategory());
     }
 
     private String handleCheckQuestions(String input) {
-        if (input.equalsIgnoreCase(this.question.getCorrectAnswer())) {
-            score++;
-            user.setScore(score);
-            state = ASK_QUESTIONS;
-            return Messages.RIGHT_ANSWER.format();
-        } else {
-            state = ASK_QUESTIONS;
-            return Messages.WRONG_ANSWER.format(this.question.getCorrectAnswer());
+        if (user.getDifficulty() != null && !user.getDifficulty().isEmpty()) {
+            state = CONNECT_DATABASE;
+            return Messages.CHOSEN_DIFFICULTY.format(user.getDifficulty());
         }
+
+        if (isValid(input)) return Messages.ENTER_DIFFICULTY.format();
+        user.setDifficulty(input);
+        state = CONNECT_DATABASE;
+        return Messages.CHOSEN_DIFFICULTY.format(user.getDifficulty());
     }
 
     private String handleGameDone() {
@@ -158,5 +156,59 @@ public class Protocol {
 
     private boolean isValid(String input) {
         return input == null || input.trim().isEmpty();
+    }
+
+    // Metod för att spara användardata till en JSON-fil
+    private void saveUserDataToJsonFile() {
+        JSONObject userData = new JSONObject();
+        userData.put("username", user.getUsername());
+        userData.put("category", user.getCategory());
+        userData.put("difficulty", user.getDifficulty());
+
+        try (FileWriter file = new FileWriter("src/DB/user_data.json")) {
+            file.write(userData.toString(4)); // Skriver JSON-data till fil med indentering för läsbarhet
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Metod för att läsa användardata för Spelare 2 från JSON-filen
+    private void loadUserDataForPlayer2() {
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/DB/user_data.json"))) {
+            StringBuilder content = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                content.append(line);
+            }
+            JSONObject userData = new JSONObject(content.toString());
+
+            // Extrahera kategori och svårighetsgrad för Spelare 2
+            String categoryForPlayer2 = userData.getString("category");
+            String difficultyForPlayer2 = userData.getString("difficulty");
+
+            // Sätt kategori och svårighetsgrad till Spelare 2
+            user.setCategory(categoryForPlayer2);
+            user.setDifficulty(difficultyForPlayer2);
+
+        } catch (IOException e) {
+            System.err.println("Kunde inte läsa från filen: " + e.getMessage());
+        }
+    }
+
+    private void handleGameDoneForPlayer1() {
+        // Spara data för Spelare 1 till fil
+        saveUserDataToJsonFile();
+
+        // Återställ spelet för Spelare 2
+        resetGameForPlayer2();
+    }
+
+    // När Spelare 2 börjar spela, laddar vi in Spelare 1:s val
+    private void resetGameForPlayer2() {
+        // Läs in kategori och svårighetsgrad för Spelare 2 från fil
+        loadUserDataForPlayer2();
+
+        // Starta spelet för Spelare 2
+        System.out.println("Spelare 2 kan nu spela med kategori: " + user.getCategory() + " och svårighetsgrad: " + user.getDifficulty());
     }
 }

@@ -11,7 +11,7 @@ public class Player {
     public Player() {
 
         // byt detta till serverns ip eller kolla om det funkar med datorns egna ip
-        try (Socket socket = new Socket(myIpAdress(), 12345);
+        try (Socket socket = new Socket("192.168.155.85", 12345);
              PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
              BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
              BufferedReader playerIn = new BufferedReader(new InputStreamReader(System.in))) {

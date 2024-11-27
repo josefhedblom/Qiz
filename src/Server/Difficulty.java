@@ -12,9 +12,6 @@ public class Difficulty {
         DIFFICULTY_LEVEL.put("Svår", "hard");
     }
 
-    // public static getDifficulties hämta all svårighetsnivåer
-
-
     public static String getDifficulty(String difficulty) {
         String path = DIFFICULTY_LEVEL.get(difficulty.trim());
         if (path.isEmpty()) {

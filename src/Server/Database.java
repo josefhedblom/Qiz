@@ -9,12 +9,10 @@ public class Database {
     private final String category;
     private final String difficulty;
 
-    public Database(String category,String difficulty) {
+    public Database(String category, String difficulty) {
         this.category = Category.getCategory(category);
         this.difficulty = Difficulty.getDifficulty(difficulty);
     }
-
-    // public static loadAllJSON hämta alla filer
 
     public JSONObject loadJSON() {
         String filePath = buildFilePath(category, difficulty);

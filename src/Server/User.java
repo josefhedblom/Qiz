@@ -1,25 +1,9 @@
 package Server;
 
-import java.net.Socket;
-
 public class User {
-    private String username;
-    private String avatar;
-    private String category;
-    private String difficulty;
-    private int score = 0;
-
-    private boolean isPlayerOne; // Nytt fält
-    public boolean isPlayerOne() {
-        return isPlayerOne;
-    }
-
-    public void setPlayerOne(boolean isPlayerOne) {
-        this.isPlayerOne = isPlayerOne;
-    }
-
-        // Resten av User-klassen
-
+    private String username = ""; // Sätt ett standardvärde för att undvika null
+    private String category = ""; // Standardvärde för category
+    private String difficulty = ""; // Standardvärde för difficulty
 
     public String getUsername() {
         return username;
@@ -27,22 +11,6 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
-    }
-
-    public int getScore() {
-        return score;
-    }
-
-    public void setScore(int score) {
-        this.score = score;
     }
 
     public String getCategory() {
