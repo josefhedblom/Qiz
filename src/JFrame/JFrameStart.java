@@ -99,7 +99,7 @@ public class JFrameStart extends JPanel {
             // Set the default selected radio button
             if (buttonI.equals("☺")) {
                 radioButton.setSelected(true);
-                userPicture = buttonI;
+                GameInformation.SetUserPicture("☺");
             }
             // Add the radio button to the button group and the panel
             buttonGroup.add(radioButton);
@@ -107,7 +107,8 @@ public class JFrameStart extends JPanel {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     //Saves it as the user picture
-                    userPicture = buttonI;
+                    GameInformation.SetUserPicture(radioButton.getText());
+                    System.out.println("user picture: " + GameInformation.GetUserPicture());
                 }
             });
             faceOptionPanel.add(radioButton);
@@ -166,7 +167,6 @@ public class JFrameStart extends JPanel {
                 public void actionPerformed(ActionEvent e) {
                     //Saves it as the user picture
                     GameInformation.SetRoundsWanted(buttonI);
-                    System.out.println("Rounds wanted: " + buttonI);
                 }
             });
             roundsPanel.add(radioButton);
@@ -236,6 +236,11 @@ public class JFrameStart extends JPanel {
         startButton.setActionCommand("startNewGame");
         joinButton.setActionCommand("joinGame");
         exitButton.setActionCommand("exit");
+
+        startButton.addActionListener(e -> {
+            GameInformation.SetUserName(userNameField.getText());
+            System.out.println("Username: "+GameInformation.GetUserName());
+        });
 
 
         //Side Panel

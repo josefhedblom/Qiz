@@ -26,6 +26,7 @@ public class JFrameMain extends JFrame {
         masterPanel.add(new JFrameScore(),"JFrameScore");
         masterPanel.add(new JFrameCatagorys(),"JFrameCatgorys");
         masterPanel.add(new JFrameQuestions(),"JFrameQuestions");
+        masterPanel.add(new JFrameWinLoesScreen(),"JFrameWinLoesScreen");
 
        InitializeComponents();
        startPlayer();

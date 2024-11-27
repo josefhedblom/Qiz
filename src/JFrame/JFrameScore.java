@@ -11,9 +11,7 @@ public class JFrameScore extends JPanel {
 
     //Customize
     public static String whoTurnText = "Din tur";
-    public static String user1UserName = "Player 1";
     public static String user2UserName = "Player 2";
-    public static String user1Picture = "☺";
     public static String user2Picture = "☺";
 
 
@@ -46,13 +44,16 @@ public class JFrameScore extends JPanel {
     JPanel userNamesPanel = new JPanel();
     JPanel userPicturePanel = new JPanel();
 
+    //Bools
+    public static boolean hasGameBeenStarted = false;
+
     //Labels Button
     JLabel whoTurnLabel = new JLabel(whoTurnText);
-    JLabel user1PictureLabel = new JLabel();
-    JLabel user1NameLabel = new JLabel();
-    JLabel user2PictureLabel = new JLabel();
-    JLabel user2NameLabel = new JLabel();
-    JButton startButton = new JButton("Start");
+    public static JLabel user1PictureLabel = new JLabel();
+    public static JLabel user1NameLabel = new JLabel();
+    public static JLabel user2PictureLabel = new JLabel();
+    public static JLabel user2NameLabel = new JLabel();
+    public static JButton startButton = new JButton("Start");
 
 
     public void InitializeComponents() {
@@ -89,8 +90,7 @@ public class JFrameScore extends JPanel {
 
         // User Pictures and Names
         //Here we can add if we want custom names and picture
-        Player.createPlayerLabels(user1PictureLabel, user1NameLabel, user1UserName,user1Picture);
-        Player.createPlayerLabels(user2PictureLabel, user2NameLabel, user2UserName,user2Picture);
+
 
         userPicturePanel.setLayout(new GridLayout(1, 2, 0, 0)); // Equal spacing for both users
         userPicturePanel.setBorder(new EmptyBorder(0, 60, 0, 60)); //Makes them closer
@@ -154,15 +154,13 @@ public class JFrameScore extends JPanel {
 
         mainPanel.repaint();
         mainPanel.revalidate();
+
     }
 
 
     //Generates the dots for each player
     //Here we add some sort of List to save who won / Lost
     public static void ScorePanel(JPanel panel, int[] score, int roundsWanted, int questionsPerRound) {
-
-        System.out.println("Rounds Wanted: ."+ roundsWanted);
-        System.out.println("Questions wanted: ."+ questionsPerRound);
 
         panel.setBackground(Color.decode(cPurple));
         panel.setVisible(true);
@@ -253,10 +251,10 @@ public class JFrameScore extends JPanel {
             questionDot.setFont(new Font("Garamond", Font.BOLD, 80)); // Smaller dots for narrower width
 
             //This determines the color, We can change them to list or another way to save the answers
-            if (i == 2){
+            if (false){
                 questionDot.setForeground(Color.decode(cYellow));
 
-            } else if (i == 3) {
+            } else if (false) {
                 questionDot.setForeground(Color.decode(cRed));
 
             }else {
@@ -270,6 +268,29 @@ public class JFrameScore extends JPanel {
         repaint();
         revalidate();
 
+
+    }
+
+    public static void CreatePlayerLabels(JLabel userPicture, JLabel userName, String name, String picture) {
+
+        String cBlack ="#0D071A";
+
+        userPicture.setHorizontalAlignment(SwingConstants.CENTER);
+        userPicture.setText(picture);
+        userPicture.setFont(new Font("Garamond", Font.BOLD, 30));
+        userPicture.setForeground(Color.decode(cBlack));
+        userPicture.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        userName.setHorizontalAlignment(SwingConstants.CENTER);
+        userName.setFont(new Font("Garamond", Font.BOLD, 30));
+        userName.setAlignmentX(Component.CENTER_ALIGNMENT);
+        userName.setForeground(Color.decode(cBlack));
+        userName.setText(name);
+
+        userPicture.repaint();
+        userPicture.revalidate();
+        userName.repaint();
+        userName.revalidate();
 
     }
 }

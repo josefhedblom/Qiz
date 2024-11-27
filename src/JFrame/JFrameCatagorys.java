@@ -12,6 +12,8 @@ import java.util.Locale;
 import java.util.Random;
 import java.util.List;
 
+import static JFrame.JFrameQuestions.question2Label;
+
 
 public class JFrameCatagorys extends JPanel {
 
@@ -97,7 +99,7 @@ public class JFrameCatagorys extends JPanel {
             modeSelected = "easy";
             JFrameMain.switchPanel("JFrameQuestions");
             GameInformation.SetDifficultyPicked("Lätt");
-            JFrameQuestions.getCategory(GameInformation.GetCategoryPicked(),GameInformation.GetDifficultyPicked(),JFrameQuestions.questionLabel,1);
+            JFrameQuestions.getCategory(GameInformation.GetCategoryPicked(),GameInformation.GetDifficultyPicked(),JFrameQuestions.questionLabel,question2Label,1);
             JFrameQuestions.startTimer();
 
 
@@ -105,7 +107,7 @@ public class JFrameCatagorys extends JPanel {
         mediumModeButton.addActionListener(e -> {
             JFrameMain.switchPanel("JFrameQuestions");
             GameInformation.SetDifficultyPicked("Medium");
-            JFrameQuestions.getCategory(GameInformation.GetCategoryPicked(),GameInformation.GetDifficultyPicked(),JFrameQuestions.questionLabel,1);
+            JFrameQuestions.getCategory(GameInformation.GetCategoryPicked(),GameInformation.GetDifficultyPicked(),JFrameQuestions.questionLabel,question2Label,1);
             JFrameQuestions.startTimer();
 
 
@@ -113,7 +115,7 @@ public class JFrameCatagorys extends JPanel {
         hardModeButton.addActionListener(e -> {
             JFrameMain.switchPanel("JFrameQuestions");
             GameInformation.SetDifficultyPicked("Svår");
-            JFrameQuestions.getCategory(GameInformation.GetCategoryPicked(),GameInformation.GetDifficultyPicked(),JFrameQuestions.questionLabel,1);
+            JFrameQuestions.getCategory(GameInformation.GetCategoryPicked(),GameInformation.GetDifficultyPicked(),JFrameQuestions.questionLabel,question2Label,1);
             JFrameQuestions.startTimer();
 
 
@@ -158,6 +160,7 @@ public class JFrameCatagorys extends JPanel {
     //Here we edit the Category buttons and can add what the category is
     public void CategoryButton(String[] listOfCategorys) {
         Random rand = new Random();
+        int howManyButtons =0;
 
         // Create a list to store selected random categories
         List<String> selectedCategories = new ArrayList<>();
@@ -168,9 +171,20 @@ public class JFrameCatagorys extends JPanel {
             }
         }
         for (String category : selectedCategories) {
+
             JButton button = new JButton();
+            if (howManyButtons == 0) {
+                button.setBackground(Color.decode(cWhite));
+                GameInformation.SetCategoryPicked(category);
+                previouslySelectedButton = button;
+                howManyButtons++;
+            }else {
+                button.setBackground(Color.decode(cYellow));
+            }
+
+
             //Set Color
-            button.setBackground(Color.decode(cYellow));
+
             button.setForeground(Color.decode(cBlack));
             //Size
             button.setFont(new Font("Garamond", Font.BOLD, 45));

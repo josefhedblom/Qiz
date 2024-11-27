@@ -14,8 +14,10 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.*;
 
-import static JFrame.JFrameScore.p1RoundListPanel;
-import static JFrame.JFrameScore.p2RoundListPanel;
+import static JFrame.JFrameScore.*;
+import static JFrame.JFrameScore.user1NameLabel;
+import static JFrame.JFrameWinLoesScreen.winUserName;
+import static JFrame.JFrameWinLoesScreen.winUserPicture;
 
 public class JFrameQuestions extends JPanel  {
 
@@ -24,9 +26,6 @@ public class JFrameQuestions extends JPanel  {
 
     private static Timer timer;
     private static int timerCounter = 0;
-
-    //STOOOOOOOOPP
-    //STOOOOOOOOP
 
     String cPurple = "#7540EE";
     static String cYellow ="#F4B512";
@@ -50,7 +49,7 @@ public class JFrameQuestions extends JPanel  {
     JPanel eastPanel = new JPanel();
 
     JPanel userPanel = new JPanel();
-    JPanel questionPanel = new JPanel();
+    static JPanel questionPanel = new JPanel();
     static JPanel timerPanel = new JPanel();
     static JPanel answersPanel = new JPanel();
 
@@ -58,6 +57,7 @@ public class JFrameQuestions extends JPanel  {
     JLabel userPictureLabel = new JLabel();
 
     public static JLabel questionLabel = new JLabel("Question");
+    public static JLabel question2Label = new JLabel("");
 
     public static int questionsAsked = 1;
 
@@ -110,11 +110,20 @@ public class JFrameQuestions extends JPanel  {
         //Question Panel
         questionPanel.setBackground(Color.decode(cWhite));
         questionPanel.setPreferredSize(new Dimension(800, 400));
-        questionPanel.setLayout(new GridBagLayout());
+        questionPanel.setMaximumSize(new Dimension(800, 400));
+
+        questionPanel.setLayout(new FlowLayout(FlowLayout.CENTER)); // Vertical alignment
+        questionPanel.setBorder(BorderFactory.createEmptyBorder(100, 0, 100, 0));
+
+
 
         //Question Text & Label
-        questionLabel.setFont(new Font("Garamond",Font.BOLD,40));
-        questionPanel.add(questionLabel);
+        questionLabel.setFont(new Font("Garamond",Font.BOLD,35));
+        question2Label.setFont(new Font("Garamond",Font.BOLD,35));
+        questionLabel.setMaximumSize(new Dimension(800,200));
+        question2Label.setMaximumSize(new Dimension(800,200));
+
+
 
 
         //Timer Panel
@@ -146,7 +155,7 @@ public class JFrameQuestions extends JPanel  {
         mainPanel.revalidate();
     }
 
-    public static void getCategory(String category, String difficulty, JLabel questionLabel,int questionsAsked){
+    public static void getCategory(String category, String difficulty, JLabel questionLabel,JLabel questionlabel2 ,int questionsAsked) {
         Database db = new Database(category, difficulty);
         JSONArray results = db.loadJSON().getJSONArray("results");
 
@@ -156,14 +165,56 @@ public class JFrameQuestions extends JPanel  {
         answersPanel.revalidate();
 
 
-
         for (int i = 0; i < 1; i++) {
             Random rand = new Random();
             JSONObject result = results.getJSONObject(rand.nextInt(10));
             Question question = new Question(result);
 
-            //Adds question from Json
-            questionLabel.setText(question.getQuestion());
+            // Retrieve the question text
+            String fullQuestionText = question.getQuestion();
+            String firstPart = "";
+            String secondPart = "";
+
+            // Split the question text for multiline display
+            if (fullQuestionText.length() > 40) { // Adjust the limit for line length as needed
+                int breakPoint = fullQuestionText.lastIndexOf(" ", 40); // Find the last space before 40 characters
+                if (breakPoint == -1) breakPoint = 40; // If no space is found, force the split
+                firstPart = fullQuestionText.substring(0, breakPoint).trim();
+                secondPart = fullQuestionText.substring(breakPoint).trim();
+            } else {
+                firstPart = fullQuestionText;
+            }
+
+            // Use HTML formatting for multiline display in JLabel
+            questionLabel.setText("<html>" + firstPart + "</html>");
+            questionlabel2.setText("<html>" + secondPart + "</html>");
+
+            // Debugging output to verify split
+            System.out.println("Label 1: " + questionLabel.getText() + "\nLabel 2: " + questionlabel2.getText());
+
+            questionLabel.setHorizontalAlignment(SwingConstants.CENTER);
+            questionlabel2.setHorizontalAlignment(SwingConstants.CENTER);
+            questionLabel.setFont(new Font("Garamond",Font.BOLD,35));
+            questionlabel2.setFont(new Font("Garamond",Font.BOLD,35));
+            questionLabel.setMaximumSize(new Dimension(800,200));
+            questionlabel2.setMaximumSize(new Dimension(800,200));
+
+            questionLabel.setVerticalAlignment(SwingConstants.CENTER);
+            questionlabel2.setVerticalAlignment(SwingConstants.CENTER);
+
+
+
+            // Clear and update the question panel
+            questionPanel.removeAll(); // Remove old components to avoid duplicates
+            questionPanel.add(questionLabel);
+            questionPanel.add(Box.createRigidArea(new Dimension(0, 10))); // Add vertical spacing
+            questionPanel.add(questionlabel2);
+
+            // Refresh the panel
+            questionPanel.revalidate();
+            questionPanel.repaint();
+
+
             JSONArray answerOptions = question.getOptions();
             Collections.shuffle(answerOptions.toList());
 
@@ -182,7 +233,7 @@ public class JFrameQuestions extends JPanel  {
                 button.setPreferredSize(new Dimension(100, 100));
                 button.setMaximumSize(button.getPreferredSize());
                 //Text
-                System.out.println("answer: " + answer);
+
                 button.setText(String.valueOf(answer));
                 // Placement
                 button.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -202,9 +253,8 @@ public class JFrameQuestions extends JPanel  {
                             GameInformation.EditPlayer2Score(GameInformation.GetQuestionsDone(),1);
                         }
 
-
                         //Next round information
-                        GameInformation.NextRound();
+
                         GameInformation.AddQuestionsDone();
                         NextQuestion();
 
@@ -219,7 +269,7 @@ public class JFrameQuestions extends JPanel  {
                         }
 
                         //Next round information
-                        GameInformation.NextRound();
+
                         GameInformation.AddQuestionsDone();
                         NextQuestion();
 
@@ -254,22 +304,32 @@ public class JFrameQuestions extends JPanel  {
         resetTimer();
         startTimer();
         if (questionsAsked == 3){
+            GameInformation.NextRound();
+            if (GameInformation.RoundNumber() == GameInformation.GetRoundsWanted()){
+                System.out.println("You won");
 
-            if (GameInformation.GetRoundsWanted() == GameInformation.RoundNumber()){
-
-                System.out.println("You Won");
+                JFrameWinLoesScreen.player1ScoreInt = GameInformation.GetPlayer1Result();
+                JFrameWinLoesScreen.resultLabel.setText(String.valueOf(GameInformation.GetPlayer1Result()));
+                JFrameWinLoesScreen.resultLabel.repaint();
+                JFrameWinLoesScreen.resultLabel.revalidate();
+                JFrameScore.CreatePlayerLabels(winUserPicture,winUserName,GameInformation.GetUserName(),GameInformation.GetUserPicture());
+                JFrameMain.switchPanel("JFrameWinLoesScreen");
+            }else {
+                JFrameMain.switchPanel("JFrameScore");
             }
+            resetTimer();
 
             JFrameScore.p1RoundListPanel.removeAll();
             JFrameScore.p2RoundListPanel.removeAll();
-            JFrameScore.ScorePanel(p1RoundListPanel,GameInformation.player1Score, GameInformation.GetRoundsWanted(),GameInformation.GetQuestionsPerRoundWanted());  // Player 1 Score Panel
-            JFrameScore.ScorePanel(p2RoundListPanel,GameInformation.player2Score,GameInformation.GetRoundsWanted(),GameInformation.GetQuestionsPerRoundWanted());
-            JFrameMain.switchPanel("JFrameScore");
+            JFrameScore.ScorePanel(p1RoundListPanel, GameInformation.player1Score, GameInformation.GetRoundsWanted(), GameInformation.GetQuestionsPerRoundWanted());  // Player 1 Score Panel
+            JFrameScore.ScorePanel(p2RoundListPanel, GameInformation.player2Score, GameInformation.GetRoundsWanted(), GameInformation.GetQuestionsPerRoundWanted());
             questionsAsked = 0;
+
         }
+
         questionsAsked++;
 
-        getCategory(GameInformation.GetCategoryPicked(),GameInformation.GetDifficultyPicked(),JFrameQuestions.questionLabel,questionsAsked);
+        getCategory(GameInformation.GetCategoryPicked(),GameInformation.GetDifficultyPicked(),JFrameQuestions.questionLabel,question2Label,questionsAsked);
 
     }
 
@@ -297,6 +357,21 @@ public class JFrameQuestions extends JPanel  {
             block.setVerticalAlignment(SwingConstants.CENTER);
 
             // Change block color based on time left
+            if (timerCounter == 9){
+                //Here we input which player it is
+                //This lets us edit the scores and uses the Questions done in Game information
+                if (true){
+                    GameInformation.EditPlayer1Score(GameInformation.GetQuestionsDone(),2);
+
+                } else if (true) {
+                    GameInformation.EditPlayer2Score(GameInformation.GetQuestionsDone(),2);
+
+                }
+                GameInformation.AddQuestionsDone();
+
+                resetTimer();
+                NextQuestion();
+            }
             if (timerCounter >= 7) {
                 block.setBackground(Color.decode(cRed));
             } else {
@@ -307,13 +382,6 @@ public class JFrameQuestions extends JPanel  {
             timerPanel.revalidate();
             timerPanel.repaint();
 
-            // Timer ends after 9 ticks
-            if (timerCounter == 9) {
-                block.setBackground(Color.decode(cBlack));
-                JOptionPane.showMessageDialog(null, "Time's up!");
-                timer.stop();
-                // Handle time-out logic here
-            }
         });
 
         timer.start();

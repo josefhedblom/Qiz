@@ -3,6 +3,8 @@ package Server;
 public class GameInformation {
 
 
+    static String userName;
+    static String userPicture;
     static int RoundNumber =0;
     static String categoryPicked;
     static String difficultyPicked;
@@ -59,5 +61,34 @@ public class GameInformation {
     }
     public static void AddQuestionsDone(){
         questionsDone++;
+    }
+    public static String GetUserName(){
+        return userName;
+    }
+    public static void SetUserName(String UserName){
+        userName = UserName;
+    }
+    public static String GetUserPicture(){
+        return userPicture;
+    }
+    public static void SetUserPicture(String UserPicture){
+        userPicture = UserPicture;
+    }
+    public  static int GetPlayer1Result(){
+        int score= 0;
+        if (player1Score == null){
+            System.out.println("Score is null error");
+            return score;
+        }
+        int lenght = player1Score.length;
+        System.out.println("Array length: " + lenght);
+        for (int i = 0; i <lenght ; i++) {
+            if (player1Score[i] == 1){
+                score++;
+                System.out.println("score:"+score);
+            }
+        }
+        System.out.println("Score is: " + score);
+        return score;
     }
 }

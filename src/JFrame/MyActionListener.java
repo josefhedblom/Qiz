@@ -16,6 +16,8 @@ public class MyActionListener extends JFrame implements ActionListener {
 
             JFrameScore.ScorePanel(p1RoundListPanel,GameInformation.player1Score, GameInformation.GetRoundsWanted(),GameInformation.GetQuestionsPerRoundWanted());  // Player 1 Score Panel
             JFrameScore.ScorePanel(p2RoundListPanel,GameInformation.player2Score,GameInformation.GetRoundsWanted(),GameInformation.GetQuestionsPerRoundWanted());   // Player 2 Score Panel
+            JFrameScore.CreatePlayerLabels(user1PictureLabel,user1NameLabel,GameInformation.GetUserName(),GameInformation.GetUserPicture());
+            JFrameScore.CreatePlayerLabels(user2PictureLabel,user2NameLabel,"Player 2",":)");
             JFrameMain.switchPanel("JFrameScore");
 
 
@@ -28,6 +30,8 @@ public class MyActionListener extends JFrame implements ActionListener {
             System.exit(0);
         } else if ("startRound".equals(actionCommand)) {
             JFrameMain.switchPanel("JFrameCatgorys");
+        } else if ("mainMenu".equals(actionCommand)) {
+            JFrameMain.switchPanel("JFrameStart");
         }
     }
 }
