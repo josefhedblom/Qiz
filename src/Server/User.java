@@ -9,6 +9,18 @@ public class User {
     private String difficulty;
     private int score = 0;
 
+    private boolean isPlayerOne; // Nytt fält
+    public boolean isPlayerOne() {
+        return isPlayerOne;
+    }
+
+    public void setPlayerOne(boolean isPlayerOne) {
+        this.isPlayerOne = isPlayerOne;
+    }
+
+        // Resten av User-klassen
+
+
     public String getUsername() {
         return username;
     }
