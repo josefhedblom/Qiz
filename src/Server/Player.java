@@ -11,7 +11,7 @@ public class Player {
     public Player() {
 
         // byt detta till serverns ip eller kolla om det funkar med datorns egna ip
-        try (Socket socket = new Socket(myIpAdress(), 12345);
+        try (Socket socket = new Socket("127.0.0.1", 12345);
              PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
              BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
              BufferedReader playerIn = new BufferedReader(new InputStreamReader(System.in))) {
@@ -41,5 +41,9 @@ public class Player {
             System.err.println("Kunde inte hämta IP-adress: " + e.getMessage());
         }
         return "127.0.0.1";
+    }
+
+    public static void main(String[] args) {
+        new Player();
     }
 }

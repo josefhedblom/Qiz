@@ -1,11 +1,24 @@
 package Server;
 
+import java.net.Socket;
+
 public class User {
     private String username;
     private String avatar;
     private String category;
     private String difficulty;
     private int score = 0;
+
+    private boolean isPlayerOne; // Nytt fält
+    public boolean isPlayerOne() {
+        return isPlayerOne;
+    }
+
+    public void setPlayerOne(boolean isPlayerOne) {
+        this.isPlayerOne = isPlayerOne;
+    }
+
+        // Resten av User-klassen
 
 
     public String getUsername() {

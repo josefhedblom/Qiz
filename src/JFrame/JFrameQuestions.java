@@ -14,6 +14,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.*;
 
+
 import static JFrame.JFrameScore.*;
 import static JFrame.JFrameScore.user1NameLabel;
 import static JFrame.JFrameWinLoesScreen.winUserName;
@@ -234,14 +235,13 @@ public class JFrameQuestions extends JPanel  {
                 button.setMaximumSize(button.getPreferredSize());
                 //Text
 
+
                 button.setText(String.valueOf(answer));
+
                 // Placement
                 button.setAlignmentX(Component.CENTER_ALIGNMENT);
+                answersPanel.add(button);
 
-
-
-                //Action listener
-                //Here we can save the answer
                 button.addActionListener((ActionListener) e -> {
                     if (button.getText().equals(question.getCorrectAnswer())) {
 
@@ -277,16 +277,19 @@ public class JFrameQuestions extends JPanel  {
 
                     button.addMouseListener(new MouseAdapter() {
                         Color originalColor = button.getBackground();
+
                         @Override
                         public void mouseEntered(MouseEvent e) {
                             button.setBackground(Color.decode(cYellow)); // Change color on hover
                         }
+
                         @Override
                         public void mouseExited(MouseEvent e) {
                             button.setBackground(originalColor); // Reset to original color
                         }
                     });
                 });
+
                 //Adds button in a random spot
                 try {
                     answersPanel.add(button, rand.nextInt(2), rand.nextInt(2));
