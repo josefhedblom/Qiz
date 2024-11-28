@@ -39,10 +39,9 @@ public class ServerListener {
             out1.println("Välj en kategori: Film, Musik, TV, etc.");
             out1.flush();
 
-            String categoryInput = in1.readLine();  // Vänta på att spelare 1 skickar sin kategori
+            String categoryInput = in1.readLine();
             System.out.println("Kategori mottagen från spelare 1: " + categoryInput);
 
-            // Vänta på svårighetsnivå från spelare 1
             System.out.println("Väntar på svårighetsnivå från spelare 1...");
             out1.println("Välj svårighetsnivå: Lätt, Medium, Svår");
             out1.flush();
@@ -50,11 +49,9 @@ public class ServerListener {
             String difficultyInput = in1.readLine();
             System.out.println("Svårighetsnivå mottagen från spelare 1: " + difficultyInput);
 
-            // Skicka den valda kategorin och svårighetsnivån till spelare 2
             out2.println("Spelare 2, nu spelar du samma omgång som spelare 1...");
             out2.println("Kategori: " + categoryInput + ", Nivå: " + difficultyInput);
 
-            // Hämta frågorna från databasen
             Database db = new Database(categoryInput, difficultyInput);
             JSONObject questions = db.loadJSON();
 
@@ -62,10 +59,8 @@ public class ServerListener {
             if (questions.has("results")) {
                 JSONArray questionArray = questions.getJSONArray("results");
 
-                // Frågor för spelare 1
                 askQuestions(out1, in1, questionArray);
 
-                // Frågor för spelare 2
                 BufferedReader in2 = new BufferedReader(new InputStreamReader(socket2.getInputStream()));
                 askQuestions(out2, in2, questionArray);
 
@@ -101,12 +96,10 @@ public class ServerListener {
             }
             out.flush();
 
-            // Vänta på spelarens svar efter att både frågan och alternativen har skickats
             System.out.println("Väntar på spelarens svar...");
-            String answer = in.readLine();  // Här väntar servern på spelarens svar
-            System.out.println("Spelare svarade: " + answer);  // Debug: Vad svarade spelaren?
+            String answer = in.readLine();
+            System.out.println("Spelare svarade: " + answer);
 
-            // Kontrollera om svaret är korrekt
             if (answer != null && answer.equalsIgnoreCase(correctAnswer)) {
                 out.println("Rätt svar!");
             } else {

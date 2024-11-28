@@ -8,7 +8,7 @@ import java.net.Socket;
 
 public class Player {
     public Player() {
-        try (Socket socket = new Socket("172.20.207.232", 12345); // Serverns IP och port
+        try (Socket socket = new Socket("127.0.0.1", 12345); // Serverns IP och port
              PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
              BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
              BufferedReader playerIn = new BufferedReader(new InputStreamReader(System.in))) {
