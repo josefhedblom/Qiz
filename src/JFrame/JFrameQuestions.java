@@ -1,11 +1,9 @@
 package JFrame;
 import Server.Database;
 import Server.GameInformation;
-import Server.GameQuestion;
 import Server.Question;
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import javax.swing.*;
 import javax.swing.Timer;
 import javax.swing.border.Border;
@@ -16,15 +14,19 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.*;
 
+
+import static JFrame.JFrameScore.*;
+import static JFrame.JFrameScore.user1NameLabel;
+import static JFrame.JFrameWinLoesScreen.winUserName;
+import static JFrame.JFrameWinLoesScreen.winUserPicture;
+
 public class JFrameQuestions extends JPanel  {
 
     public static String userPicture ;
     public static String userName;
 
-    private static boolean timerStarted = false;
-    private Timer timer;
+    private static Timer timer;
     private static int timerCounter = 0;
-
 
     String cPurple = "#7540EE";
     static String cYellow ="#F4B512";
@@ -48,17 +50,18 @@ public class JFrameQuestions extends JPanel  {
     JPanel eastPanel = new JPanel();
 
     JPanel userPanel = new JPanel();
-    JPanel questionPanel = new JPanel();
-    JPanel timerPanel = new JPanel();
+    static JPanel questionPanel = new JPanel();
+    static JPanel timerPanel = new JPanel();
     static JPanel answersPanel = new JPanel();
 
     JLabel userNameLabel = new JLabel("User Name");
     JLabel userPictureLabel = new JLabel();
 
     public static JLabel questionLabel = new JLabel("Question");
+    public static JLabel question2Label = new JLabel("");
 
-    //Temp
-    JLabel timerLabel = new JLabel("Timer:");
+    public static int questionsAsked = 1;
+
 
 
     public void InitializeComponents() {
@@ -102,19 +105,26 @@ public class JFrameQuestions extends JPanel  {
 
         //Here to update username and picture
         Player.createPlayerLabels(userNameLabel,userPictureLabel,userName,userPicture);
-
         userPanel.add(userPictureLabel);
         userPanel.add(userNameLabel);
+
         //Question Panel
         questionPanel.setBackground(Color.decode(cWhite));
         questionPanel.setPreferredSize(new Dimension(800, 400));
-        questionPanel.setLayout(new GridBagLayout());
+        questionPanel.setMaximumSize(new Dimension(800, 400));
+
+        questionPanel.setLayout(new FlowLayout(FlowLayout.CENTER)); // Vertical alignment
+        questionPanel.setBorder(BorderFactory.createEmptyBorder(100, 0, 100, 0));
 
 
 
         //Question Text & Label
-        questionLabel.setFont(new Font("Garamond",Font.BOLD,40));
-        questionPanel.add(questionLabel);
+        questionLabel.setFont(new Font("Garamond",Font.BOLD,35));
+        question2Label.setFont(new Font("Garamond",Font.BOLD,35));
+        questionLabel.setMaximumSize(new Dimension(800,200));
+        question2Label.setMaximumSize(new Dimension(800,200));
+
+
 
 
         //Timer Panel
@@ -123,15 +133,10 @@ public class JFrameQuestions extends JPanel  {
         timerPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
         timerPanel.setBorder(BorderFactory.createEmptyBorder(0, 300, 0, 300)); // Top, Left, Bottom, Right padding
 
-
-
         //Answer Panel
         answersPanel.setBackground(Color.decode(cPurple));
         answersPanel.setPreferredSize(new Dimension(600, 400));
         answersPanel.setLayout(new GridLayout(2,2,10,10));
-
-        //Adds the buttons
-
 
 
         // Add components
@@ -151,19 +156,76 @@ public class JFrameQuestions extends JPanel  {
         mainPanel.revalidate();
     }
 
-    public static void getCategory(String category, String difficulty, JLabel questionLabel){
+    public static void getCategory(String category, String difficulty, JLabel questionLabel,JLabel questionlabel2 ,int questionsAsked) {
         Database db = new Database(category, difficulty);
         JSONArray results = db.loadJSON().getJSONArray("results");
-        for (int i = 0; i < 1 ; i++) {
-            JSONObject result = results.getJSONObject(i);
+
+        //Clears The Panel
+        answersPanel.removeAll();
+        answersPanel.repaint();
+        answersPanel.revalidate();
+
+
+        for (int i = 0; i < 1; i++) {
+            Random rand = new Random();
+            JSONObject result = results.getJSONObject(rand.nextInt(10));
             Question question = new Question(result);
 
-            //Adds question from Json
-            questionLabel.setText(question.getQuestion());
+            // Retrieve the question text
+            String fullQuestionText = question.getQuestion();
+            String firstPart = "";
+            String secondPart = "";
+
+            // Split the question text for multiline display
+            if (fullQuestionText.length() > 40) { // Adjust the limit for line length as needed
+                int breakPoint = fullQuestionText.lastIndexOf(" ", 40); // Find the last space before 40 characters
+                if (breakPoint == -1) breakPoint = 40; // If no space is found, force the split
+                firstPart = fullQuestionText.substring(0, breakPoint).trim();
+                secondPart = fullQuestionText.substring(breakPoint).trim();
+            } else {
+                firstPart = fullQuestionText;
+            }
+
+            // Use HTML formatting for multiline display in JLabel
+            questionLabel.setText("<html>" + firstPart + "</html>");
+            questionlabel2.setText("<html>" + secondPart + "</html>");
+
+            // Debugging output to verify split
+            System.out.println("Label 1: " + questionLabel.getText() + "\nLabel 2: " + questionlabel2.getText());
+
+            questionLabel.setHorizontalAlignment(SwingConstants.CENTER);
+            questionlabel2.setHorizontalAlignment(SwingConstants.CENTER);
+            questionLabel.setFont(new Font("Garamond",Font.BOLD,35));
+            questionlabel2.setFont(new Font("Garamond",Font.BOLD,35));
+            questionLabel.setMaximumSize(new Dimension(800,200));
+            questionlabel2.setMaximumSize(new Dimension(800,200));
+
+            questionLabel.setVerticalAlignment(SwingConstants.CENTER);
+            questionlabel2.setVerticalAlignment(SwingConstants.CENTER);
 
 
-            for(Object option : question.getOptions()){
+
+            // Clear and update the question panel
+            questionPanel.removeAll(); // Remove old components to avoid duplicates
+            questionPanel.add(questionLabel);
+            questionPanel.add(Box.createRigidArea(new Dimension(0, 10))); // Add vertical spacing
+            questionPanel.add(questionlabel2);
+
+            // Refresh the panel
+            questionPanel.revalidate();
+            questionPanel.repaint();
+
+
+            JSONArray answerOptions = question.getOptions();
+            Collections.shuffle(answerOptions.toList());
+
+
+            for (int j = 0; j < answerOptions.length(); j++) {
+
                 JButton button = new JButton();
+
+                String answer = answerOptions.getString(j);
+                //Create Button
                 //Set Color
                 button.setBackground(Color.decode(cRed));
                 button.setForeground(Color.decode(cBlack));
@@ -172,21 +234,45 @@ public class JFrameQuestions extends JPanel  {
                 button.setPreferredSize(new Dimension(100, 100));
                 button.setMaximumSize(button.getPreferredSize());
                 //Text
-                button.setText(option.toString());
+
+
+                button.setText(String.valueOf(answer));
+
                 // Placement
                 button.setAlignmentX(Component.CENTER_ALIGNMENT);
                 answersPanel.add(button);
 
                 button.addActionListener((ActionListener) e -> {
                     if (button.getText().equals(question.getCorrectAnswer())) {
-                        JOptionPane.showMessageDialog(null, "yippi");
-                        JFrameScore.player1Score[GameInformation.RoundNumber()] = 1;
-                        GameInformation.NextRound();
 
-                    } else {
-                        JOptionPane.showMessageDialog(null, "whom whomp");
-                        JFrameScore.player2Score[GameInformation.RoundNumber()] = 0;
-                        GameInformation.NextRound();
+                        //Here we input which player it is
+                        //This lets us edit the scores and uses the Questions done in Game information
+                        if (true){
+                            GameInformation.EditPlayer1Score(GameInformation.GetQuestionsDone(),1);
+                        } else if (true) {
+                            GameInformation.EditPlayer2Score(GameInformation.GetQuestionsDone(),1);
+                        }
+
+                        //Next round information
+
+                        GameInformation.AddQuestionsDone();
+                        NextQuestion();
+
+
+                    }else {
+                        //Here we input which player it is
+                        //This lets us edit the scores and uses the Questions done in Game information
+                        if (true){
+                            GameInformation.EditPlayer1Score(GameInformation.GetQuestionsDone(),2);
+                        } else if (true) {
+                            GameInformation.EditPlayer2Score(GameInformation.GetQuestionsDone(),2);
+                        }
+
+                        //Next round information
+
+                        GameInformation.AddQuestionsDone();
+                        NextQuestion();
+
                     }
 
                     button.addMouseListener(new MouseAdapter() {
@@ -203,81 +289,104 @@ public class JFrameQuestions extends JPanel  {
                         }
                     });
                 });
+
+                //Adds button in a random spot
+                try {
+                    answersPanel.add(button, rand.nextInt(2), rand.nextInt(2));
+                }catch (IllegalArgumentException e){
+                    answersPanel.add(button);
+                }
+
             }
+            answersPanel.repaint();
+            answersPanel.revalidate();
+        }
+    }
+
+    public static void NextQuestion(){
+        resetTimer();
+        startTimer();
+        if (questionsAsked == 3){
+            GameInformation.NextRound();
+            if (GameInformation.RoundNumber() == GameInformation.GetRoundsWanted()){
+                System.out.println("You won");
+
+                JFrameWinLoesScreen.player1ScoreInt = GameInformation.GetPlayer1Result();
+                JFrameWinLoesScreen.resultLabel.setText(String.valueOf(GameInformation.GetPlayer1Result()));
+                JFrameWinLoesScreen.resultLabel.repaint();
+                JFrameWinLoesScreen.resultLabel.revalidate();
+                JFrameScore.CreatePlayerLabels(winUserPicture,winUserName,GameInformation.GetUserName(),GameInformation.GetUserPicture());
+                JFrameMain.switchPanel("JFrameWinLoesScreen");
+            }else {
+                JFrameMain.switchPanel("JFrameScore");
+            }
+            resetTimer();
+
+            JFrameScore.p1RoundListPanel.removeAll();
+            JFrameScore.p2RoundListPanel.removeAll();
+            JFrameScore.ScorePanel(p1RoundListPanel, GameInformation.player1Score, GameInformation.GetRoundsWanted(), GameInformation.GetQuestionsPerRoundWanted());  // Player 1 Score Panel
+            JFrameScore.ScorePanel(p2RoundListPanel, GameInformation.player2Score, GameInformation.GetRoundsWanted(), GameInformation.GetQuestionsPerRoundWanted());
+            questionsAsked = 0;
+
         }
 
+        questionsAsked++;
+
+        getCategory(GameInformation.GetCategoryPicked(),GameInformation.GetDifficultyPicked(),JFrameQuestions.questionLabel,question2Label,questionsAsked);
+
     }
 
-
-
-
-
-    ArrayList<String> questionNames = new ArrayList<>();
-
-    public void QuestionNameRandomiser (){
-
-
-
-
-        questionNames.add("rätt svar!!");
-        questionNames.add("fel svar1!!");
-        questionNames.add("fel svar2!!");
-        questionNames.add("fel svar3!!");
-
-        Collections.shuffle(questionNames);
-    }
-
-
-
-
-
-    //15-second timer
-    public void StartTimer() {
-        if(timerStarted) return;
-
-        Timer timer = new Timer(2000, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                timerCounter++;
-                JLabel block = new JLabel();
-                if (timerCounter == 9){
-                    block.setBackground(Color.decode(cBlack));
-                    //Add lost round
-
-
-
-                }
-                else if (timerCounter >= 7){
-                    block.setBackground(Color.decode(cRed));
-                }else {
-                    block.setBackground(Color.decode(cYellow));
-                }
-                block.setVisible(true);
-                block.setOpaque(true);
-                block.setPreferredSize(new Dimension(50, 20));
-                block.setVerticalAlignment(SwingConstants.CENTER);
-
-                timerPanel.add(block);
-                timerPanel.revalidate();
-                timerPanel.repaint();
-            }
-
-        });
-        timer.start();
-        timerStarted = true;
-    }
-    public void StopTimer() {
+    //Timer V2
+    public static void resetTimer() {
         if (timer != null && timer.isRunning()) {
             timer.stop();
         }
+        timerCounter = 0;
+        timerPanel.removeAll();
+        timerPanel.repaint();
+        timerPanel.revalidate();
     }
 
-    public void setVisible(boolean visible) {
-        super.setVisible(visible);
-        if (visible) {
-            StartTimer();  // Start the timer when the panel becomes visible
-        } else {
-            StopTimer();  // Stop the timer when the panel is hidden
-        }
+    // Timer Start Method
+    public static void startTimer() {
+        resetTimer();
+
+        timer = new Timer(500, e -> {
+            timerCounter++;
+
+            JLabel block = new JLabel();
+            block.setOpaque(true);
+            block.setPreferredSize(new Dimension(50, 20));
+            block.setVerticalAlignment(SwingConstants.CENTER);
+
+            // Change block color based on time left
+            if (timerCounter == 9){
+                //Here we input which player it is
+                //This lets us edit the scores and uses the Questions done in Game information
+                if (true){
+                    GameInformation.EditPlayer1Score(GameInformation.GetQuestionsDone(),2);
+
+                } else if (true) {
+                    GameInformation.EditPlayer2Score(GameInformation.GetQuestionsDone(),2);
+
+                }
+                GameInformation.AddQuestionsDone();
+
+                resetTimer();
+                NextQuestion();
+            }
+            if (timerCounter >= 7) {
+                block.setBackground(Color.decode(cRed));
+            } else {
+                block.setBackground(Color.decode(cYellow));
+            }
+
+            timerPanel.add(block);
+            timerPanel.revalidate();
+            timerPanel.repaint();
+
+        });
+
+        timer.start();
     }
 }
